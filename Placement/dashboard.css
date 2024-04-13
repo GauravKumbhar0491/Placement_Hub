@@ -1,7 +1,4 @@
-.span 
-{
-    font-style:  verdana, geneva, sans-serif;
-}
+< span style="font-family: verdana, geneva, sans-serif;">
 /*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
@@ -12,11 +9,14 @@
     outline: none;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
+    
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
+    background-image: url("My first design.png");
+    background-size: cover;
 }
 
 .sidebar {
@@ -25,12 +25,13 @@ body {
     left: 0;
     bottom: 0;
     width: 90px;
-    height: 110vh;
+    height: 98vh;
     padding: 0 1.7rem;
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
     background-color:rgb(20, 39, 78);
+    box-shadow: 0 20px 20px rgb(42, 42, 42);
 }
 
 .sidebar:hover {
@@ -84,7 +85,7 @@ body {
     align-items: center;
 }
 
-/*-----main loop-----*/
+/-----main loop-----/
 .main {
     padding: 20px;
     width: 80%;
@@ -106,9 +107,8 @@ body {
     margin: 10px;
     background: #fff;
     text-align: center;
-    border-radius: 20px;
     padding: 10px;
-    box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 20px 35px rgb(90, 89, 89);
 }
 
 .main-company .card h3 {
@@ -135,10 +135,11 @@ body {
     background: rgb(155, 164, 180);
 }
 
-/*------Table-----*/
+/------Table-----/
 .company-names {
     margin-top: 20px;
     text-transform: capitalize;
+    box-shadow: 0 20px 35px rgb(111, 110, 110);
 }
 
 .company-names-list {
