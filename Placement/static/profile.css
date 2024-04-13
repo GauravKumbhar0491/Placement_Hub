@@ -1,4 +1,4 @@
-< span style="font-family: verdana, geneva, sans-serif;">
+.span {font-family: verdana, geneva, sans-serif;}
 /*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
@@ -15,7 +15,6 @@ body {
     display: flex;
     background: rgb(241, 246, 249);
     overflow: hidden;
-    background-image: url("My first design.png");
 }
 
 .sidebar {
@@ -30,8 +29,6 @@ body {
     overflow: hidden;
     transition: all 0.5s linear;
     background-color:rgb(20, 39, 78);
-    box-shadow: 0 20px 20px rgb(188, 187, 187);
-    box-shadow: 0 20px 20px rgb(42, 42, 42);
 }
 
 .sidebar:hover {
@@ -85,7 +82,7 @@ body {
     align-items: center;
 }
 
-/-------first-------/
+/*-------first-------*/
 .first{
     padding: 10px;
     align-items: center;
@@ -117,7 +114,7 @@ body {
     text-align: center;
     border-radius: 20px;
     padding: 10px;
-    box-shadow: 0 20px 35px rgb(65, 64, 64);
+    box-shadow: 0 20px 35px rgba(128, 128, 128, 0.734);
 }
 
 
@@ -151,18 +148,17 @@ input {
 
 .container {
     position: relative;
-    height: 70px; 
+    height: 70px; /* Set the height of the container */
     display: flex;
     justify-content: center;
-    align-items: flex-end; 
+    align-items: flex-end; /* Align items to the bottom */
 }
   
 .bottom-center {
     position: absolute;
-    font-size: 23px;
+    font-size: 25px;
     color: rgb(20, 39, 78);
     height: 55px;
     width: 125px;
     bottom: 0px; 
-    box-shadow: 0 20px 35px rgb(65, 64, 64);
 }

@@ -1,0 +1,104 @@
+.span 
+{
+    font-style:  verdana, geneva, sans-serif;
+}
+/*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+
+body {
+    display: flex;
+    background: rgb(241, 246, 249);
+}
+
+.sidebar {
+    position: sticky;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 60px;
+    height: 110vh;
+    padding: 0 1.7rem;
+    color: #fff;
+    overflow: hidden;
+    transition: all 0.5s linear;
+    background-color:rgb(20, 39, 78);
+}
+
+.sidebar:hover {
+    width: 240px;
+    transition: 0.5s;
+}
+
+.logo {
+    height: 80px;
+    padding: 16px;
+}
+
+.main {
+    height: 88%;
+    position: relative;
+    list-style: none;
+    padding: 0;
+}
+
+.main li {
+    padding: 1rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    transition: all 0.5s ease-in-out;
+}
+
+.main li:hover {
+    background: #e0e0e058;
+}
+
+.main a {
+    color: #fff;
+    font-family: Helvetica, sans-serif;
+    font-size: 17px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.main a span {
+    overflow: hidden;
+}
+
+.main a i {
+    font-size: 1.7rem;
+}
+
+.college-logo {
+    display: inline-block;
+    align-items: center;
+}
+
+/*-----Graphs-----*/
+.upper graphs {
+    position: relative;
+    padding: 20px;
+    width: 100%;
+}
+
+.first {
+    font-family: Helvetica, sans-serif;
+    width: 100%;
+    font-size: larger;
+    display: flex;
+}
+
+.actual-graphs1 {
+    display: flex;
+    margin-top: 20px;
+}
