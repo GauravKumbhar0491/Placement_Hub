@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coordinator Dashboard</title>
+    <link rel="stylesheet" href="coordinatordash.css">
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <!-- Font Awesome Cdn Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="fontawesome/css/all.css"/>
+    
+
+</head>
+<body>
+    <div class="container">
+        <h2>Coordinator Dashboard</h2>
+        <form id="companyForm">
+            <div class="form-group">
+                <label for="companyName">Company Name:</label>
+                <input type="text" id="companyName" name="companyName" required>
+            </div>
+            <div class="form-group">
+                <label for="companyDescription">Job Description:</label>
+                <input type="text" id="companyDescription" name="companyDescription" required>
+            </div>
+            <div class="form-group">
+                <label for="companyLocation">Company Location:</label>
+                <input type="text" id="companyLocation" name="companyLocation" required>
+            </div>
+            <div class="form-group">
+                <label for="previousYearCGPA">Previous Year CGPA:</label>
+                <input type="text" id="previousYearCGPA" name="previousYearCGPA" required>
+            </div>
+            <div class="form-group">
+                <label for="contactNumber">Contact Number:</label>
+                <input type="text" id="contactNumber" name="contactNumber" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Company">
+            </div>
+        </form>
+
+        <h2>Applied Students</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Contact Number</th>
+                    <th>Applied Company</th>
+                    <th>Resume</th>
+                </tr>
+            </thead>
+            <tbody id="appliedStudents">
+                <!-- Applied students' information will be dynamically populated here -->
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a href="#"></a></td>
+                </tr>
+                <!-- Add more rows for additional students -->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
