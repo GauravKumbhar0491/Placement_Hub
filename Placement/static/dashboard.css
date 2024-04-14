@@ -85,7 +85,7 @@ body {
     align-items: center;
 }
 
-/-----main loop-----/
+/*-----main loop-----*/
 .main {
     padding: 20px;
     width: 80%;
@@ -135,7 +135,7 @@ body {
     background: rgb(155, 164, 180);
 }
 
-/------Table-----/
+/*------Table-----*/
 .company-names {
     margin-top: 20px;
     text-transform: capitalize;
