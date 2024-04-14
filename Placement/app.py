@@ -1,26 +1,52 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+from db import DB, DBException
+import requests
+import os
 
 app = Flask(__name__)
+app.secret_key = 'supersecretkey'
+app.config['PROFILE_FOLDER'] = 'profile_data'
+
+db = DB()
+
 
 @app.route('/')
 def main_page():
     return render_template('index.html')
 
-@app.route('/stud_login')
+
+@app.route('/stud_login', methods=['GET', 'POST'])
 def stud_login():
-    return render_template('stud_login.html', signup=request.args.get('signup', False))
+    if request.method == 'POST':
+        resp = requests.post(
+            url='http://localhost:5000/api/login',
+            json={'email': request.form['email'], 'password': request.form['pass']},
+        )
+
+        if resp.status_code == 200:
+            resp = make_response(redirect(url_for('dashboard')))
+            resp.set_cookie('email', request.form['email'])
+            return resp
+        else:
+            return render_template('stud_login.html', login_error=resp.json()['error'])
+
+    return render_template('stud_login.html')
+
 
 @app.route('/profile', methods=['GET', "POST"])
 def profile():
+    if not request.cookies.get('email'):
+        return redirect(url_for('stud_login'))
+
     if request.method == "POST":
         data = dict(request.form)
-        
-        ssc= request.files['10ms']
-        hsc= request.files['12ms']
-        fe= request.files['fe']
-        se= request.files['se']
-        te= request.files['te']
-        be= request.files['be']
+
+        ssc = request.files['10ms']
+        hsc = request.files['12ms']
+        fe = request.files['fe']
+        se = request.files['se']
+        te = request.files['te']
+        be = request.files['be']
         data.update({
             "fe": fe.filename,
             "se": se.filename,
@@ -29,47 +55,101 @@ def profile():
             "10ms": ssc.filename,
             "12ms": hsc.filename
         })
-        print(data)
+        try:
+            os.mkdir(f"{app.config['PROFILE_FOLDER']}")
+            os.mkdir(f"{app.config['PROFILE_FOLDER']}/{data['email']}")
+        except FileExistsError:
+            pass
+        for file in request.files.values():
+            file.save(os.path.join(app.config['PROFILE_FOLDER'], data['email'], file.filename))
+
+        db.insert_info(data)
+
         return render_template('profile.html', data=data)
-    else:
-        return render_template('profile.html')
+
+    return render_template('profile.html')
+
 
 @app.route('/dashboard', methods=['GET', 'POST'])
-def dashboard():      
+def dashboard():
+    if not request.cookies.get('email'):
+        return redirect(url_for('stud_login'))
+
     return render_template('dashboard.html')
+
 
 @app.route('/coordinator')
 def coordinator():
     return render_template('coordinator.html')
 
+
 @app.route('/stat')
 def stat():
     return render_template('stat.html')
 
+
 @app.route('/register', methods=['POST'])
 def register():
-    print(request.form)
-    return redirect(url_for('stud_login', signup=True))
+    try:
+        db.insert_user({
+            'name': request.form['name'],
+            'email': request.form['email'],
+            'password': request.form['password']
+        })
+    except DBException.UserAlreadyExists:
+        return render_template('stud_login.html', signup_error="User already exists", sign_up=False)
 
-@app.route('/coordinatordash', methods=['GET','POST'])
+    resp = make_response(render_template('stud_login.html', signup=True))
+    resp.set_cookie('email', request.form['email'])
+
+    return resp
+
+
+@app.route('/coordinatordash', methods=['GET', 'POST'])
 def coordinatordash():
     return render_template('coordinatordash.html')
 
-@app.route('/careers', methods=['GET','POST'])
+
+@app.route('/careers', methods=['GET', 'POST'])
 def careers():
     return render_template('careers.html')
 
-@app.route('/faq', methods=['GET','POST'])
+
+@app.route('/faq', methods=['GET', 'POST'])
 def faq():
     return render_template('faq.html')
 
-@app.route('/testimonials', methods=['GET','POST'])
+
+@app.route('/testimonials', methods=['GET', 'POST'])
 def test():
     return render_template('test.html')
 
 
+# ===============
+# API ROUTES
+# ===============
+
+@app.route('/api/login', methods=['POST'])
+def api_login():
+    email = request.json['email']
+    password = request.json['password']
+
+    try:
+        db.check_user_password(email, password)
+    except DBException.UserDoesNotExists:
+        return jsonify({'error': 'Incorrect email or password'}), 401
+
+    resp = make_response(jsonify({'email': email}), 200)
+    resp.set_cookie('email', email)
+
+    return resp
 
 
+@app.route('/api/logout')
+def logout():
+    resp = make_response(redirect(url_for('stud_login')))
+    resp.delete_cookie('email')
+    return resp
 
 
 if __name__ == '__main__':
