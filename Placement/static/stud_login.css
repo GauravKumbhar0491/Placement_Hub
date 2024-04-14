@@ -1,15 +1,19 @@
+< span style="font-family: verdana, geneva, sans-serif;">
+/*  import google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
 
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Helvetica, sans-serif;
 }
 
 body{
-    background-color: #c9d6ff;
-    background: linear-gradient(to right, #e2e2e2, #c9d6ff);
+    background-image: url("back-img.jpg");
+    background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,10 +21,14 @@ body{
     height: 100vh;
 }
 
+h1 {
+    font-family: Helvetica, sans-serif;
+}
+
 .container{
-    background-color: #fff;
+    background-color: rgb(241, 246, 249);
     border-radius: 30px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
     width: 768px;
@@ -33,21 +41,24 @@ body{
     line-height: 20px;
     letter-spacing: 0.3px;
     margin: 20px 0;
+    font-family: Helvetica, sans-serif;
 }
 
 .container span{
+    font-family: Helvetica, sans-serif;
     font-size: 12px;
 }
 
 .container a{
     color: #333;
+    font-family: Helvetica, sans-serif;
     font-size: 13px;
     text-decoration: none;
     margin: 15px 0 10px;
 }
 
 .container button{
-    background-color: orange;
+    background-color: rgb(155, 164, 180);
     color: #fff;
     font-size: 12px;
     padding: 10px 45px;
@@ -61,16 +72,16 @@ body{
 }
 
 .container button:hover{
-    background-color: #00a1ff;
+    background-color: rgb(57, 72, 103);
 }
 
 .container button.hidden{
     background-color: transparent;
-    border-color: #fff;
+    border-color: rgb(241, 246, 249);
 }
 
 .container form{
-    background-color: #fff;
+    background-color: rgb(241, 246, 249);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -80,14 +91,22 @@ body{
 }
 
 .container input{
-    background-color: #eee;
-    border: none;
+    font-family: Helvetica, sans-serif;
+    background-color: rgb(241, 246, 249);
+    border-bottom: 1px solid rgb(57, 72, 103);
     margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
-    border-radius: 8px;
     width: 100%;
     outline: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+}
+
+.container input:hover {
+    transition: all 0.5s linear;
+    font-size: x-large;
 }
 
 .form-container{
@@ -165,10 +184,10 @@ body{
 }
 
 .toggle{
-    background-color: linear-gradient(to left, #00a1ff, #00ff8f);
+    background-color: linear-gradient(to left, #3394867, #9BA4B4);
     height: 100%;
-    background: linear-gradient(to right, #C33764  , #1D2671);
-    color: #fff;
+    background: linear-gradient(to right, #9BA4B4  , #394867);
+    color: rgb(241, 246, 249);
     position: relative;
     left: -100%;
     height: 100%;
