@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="coordinator.css">
+    <link rel="stylesheet" href="/static/coordinator.css">
     <title>Coordinator Login Page</title>
 </head>
 <body>
@@ -17,7 +17,7 @@
                 <div class="card__content">
                     <div class="login-box">
                       
-                        <form action="">
+                        <form action="/coordinatordash" method="post" enctype="text/plain">
                           <h2>Login</h2>
                     
                           <div class="input-box">
@@ -36,7 +36,7 @@
                             <label>Password</label>
                           </div>
                     
-                          <button onclick="window.location.href='coordinatordash.html'" type="submit">Login</button>
+                          <button type="submit" type="submit">Login</button>
                     
                         </form>
                       </div>
