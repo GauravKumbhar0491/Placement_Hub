@@ -1,7 +1,4 @@
-.span 
-{
-    font-style:  verdana, geneva, sans-serif;
-}
+< span style="font-family: verdana, geneva, sans-serif;">
 /*  import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
@@ -17,6 +14,9 @@
 body {
     display: flex;
     background: rgb(241, 246, 249);
+    overflow: hidden;
+    background-image: url("my\ first\ design.jpg");
+    background-size: cover;
 }
 
 .sidebar {
@@ -31,6 +31,7 @@ body {
     overflow: hidden;
     transition: all 0.5s linear;
     background-color:rgb(20, 39, 78);
+    box-shadow: 0 20px 20px rgb(42, 42, 42);
 }
 
 .sidebar:hover {
@@ -84,21 +85,12 @@ body {
     align-items: center;
 }
 
-/*-----Graphs-----*/
-.upper graphs {
-    position: relative;
-    padding: 20px;
-    width: 100%;
-}
-
-.first {
+/-----main-----/
+.first h1{
     font-family: Helvetica, sans-serif;
-    width: 100%;
-    font-size: larger;
-    display: flex;
+    font-size: 29px;
 }
 
-.actual-graphs1 {
-    display: flex;
-    margin-top: 20px;
+.second {
+    margin-top: 81px;
 }
