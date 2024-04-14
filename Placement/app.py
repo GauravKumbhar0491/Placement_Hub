@@ -55,6 +55,19 @@ def register():
 def coordinatordash():
     return render_template('coordinatordash.html')
 
+@app.route('/careers', methods=['GET','POST'])
+def careers():
+    return render_template('careers.html')
+
+@app.route('/faq', methods=['GET','POST'])
+def faq():
+    return render_template('faq.html')
+
+@app.route('/testimonials', methods=['GET','POST'])
+def test():
+    return render_template('test.html')
+
+
 
 
 
