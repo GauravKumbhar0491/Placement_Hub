@@ -51,6 +51,11 @@ def register():
     print(request.form)
     return redirect(url_for('stud_login', signup=True))
 
+@app.route('/coordinatordash', methods=['GET','POST'])
+def coordinatordash():
+    return render_template('coordinatordash.html')
+
+
 
 
 
