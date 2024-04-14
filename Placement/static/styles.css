@@ -31,8 +31,6 @@ body {
 }
 
 .box a:hover{
-    transition: 0.4s;
-    font-size:24px;
     color: gray;
 }
 
@@ -47,24 +45,24 @@ body {
     background-size: cover;
     border-radius: 3%;
     margin-top: 30px;
-    margin-left: 10px;
+    margin-left: 23px;
     box-shadow: 0px 0px 20px 15px rgba(113, 111, 111, 0.608);
 }
 
 .box .box2{
-    width: 45%;
-    height: 25%;
+    width: 49%;
+    height: 23%;
     background-image: url("img1.png");
     background-size: cover;
     border-radius: 50%;
-    margin-top: -70px;
+    margin-top: -30px;
     margin-left: 255px;
     box-shadow: 0px 0px 30px 20px rgba(113, 111, 111, 0.608);
 }
 
 .box .box3{
-    width: 45%;
-    height: 25%;
+    width: 47%;
+    height: 23%;
     background-image: url("img5.png");
     background-size: cover;
     border-radius: 50%;
@@ -85,10 +83,6 @@ body {
     font-family: cursive;
     transition: all 0.5s;
     font-size: xx-large;
-}
-
-.box.h2 {
-    font-family: cursive;
 }
 
 .box .sub1{
@@ -155,4 +149,54 @@ body {
     border-radius: 3%;
     margin-top: 80px;
     box-shadow: 0px 0px 30px 20px rgba(144, 143, 143, 0.608);
+}
+
+.box .sub1 h2 {
+    text-align: center;
+}
+.box .sub1 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .sub2 h2 {
+    text-align: center;
+}
+.box .sub2 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .sub3 h2 {
+    text-align: center;
+}
+.box .sub3 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .sub4 h2 {
+    text-align: center;
+}
+.box .sub4 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .sub5 h2 {
+    text-align: center;
+}
+.box .sub5 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .sub6 h2 {
+    text-align: center;
+}
+.box .sub6 h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
+}
+.box .about-us h2 {
+    text-align: center;
+}
+.box .about-us h2:hover{
+    transition: all 0.5s;
+    font-size: xx-large;
 }
