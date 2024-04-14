@@ -18,9 +18,10 @@ body {
 }
 
 .box .main-img {
-    height: 800px;
-    width: 722px;
+    height: 900px;
+    width: 820px;
     background-image: url("first-page.png");
+    background-size: cover;
 }
 
 .box a{
@@ -31,7 +32,7 @@ body {
 
 .box a:hover{
     transition: 0.4s;
-    font-size: xx-large;
+    font-size:24px;
     color: gray;
 }
 
