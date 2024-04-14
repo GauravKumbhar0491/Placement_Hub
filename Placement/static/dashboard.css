@@ -82,10 +82,10 @@ body {
 }
 
 /*-----main loop-----*/
-.main {
-    padding: 20px;
+ .main {
+    padding: 0.5px;
     width: 80%;
-}
+} 
 .main-loop {
     font-family: Helvetica, sans-serif;
     width: 100%;
