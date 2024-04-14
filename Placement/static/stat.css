@@ -5,12 +5,12 @@
     outline: none;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
+    
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
-    overflow: hidden;
     background-image: url("my\ first\ design.jpg");
     background-size: cover;
 }
@@ -20,9 +20,9 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 60px;
-    height: 110vh;
-    padding: 0 1.7rem;
+    width: 90px;
+    height: 99vh;
+    padding: 0 0.8rem;
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
@@ -36,8 +36,8 @@ body {
 }
 
 .logo {
-    height: 80px;
-    padding: 16px;
+    height: 50px;
+    padding: 12px;
 }
 
 .main {
@@ -73,14 +73,13 @@ body {
 }
 
 .main a i {
-    font-size: 1.7rem;
+    font-size: 1.6rem;
 }
 
 .college-logo {
     display: inline-block;
     align-items: center;
 }
-
 /*-----main-----*/
 .first h1{
     font-family: Helvetica, sans-serif;
