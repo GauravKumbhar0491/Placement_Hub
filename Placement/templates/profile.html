@@ -6,8 +6,8 @@
     <title>Info</title>
     <link rel="stylesheet" href="profile.css" />
     <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <link rel="stylesheet" href="fontawesome/css/all.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css"/>
+    <link rel="stylesheet" href="/static/all.min.css"/>
     
 
 </head>
@@ -61,6 +61,10 @@
         </div>
     </div>
 
+{% if data %}
+    <script type="text/javascript">
+        alert("Profile Completed")
+    </script>
     <section class="first">
         <div class="first-half">
             <h1>Profile</h1>
@@ -70,96 +74,175 @@
                 <h1>Personal Info</h1>
                 <hr>
                 <h2>Full Name</h2>
-                <input type="text"
-                class="input" value="">
+                <p>{{ data['Fullname'] }}</p>
                 <h2>Date of Birth</h2>
-                <input type="text"
-                class="input" value="">
+                <p>{{ data['DOB'] }}</p>
                 <h2>Gender</h2>
-                <input type="checkbox" 
-                class="input">Male
-                <input type="checkbox"
-                class="input">Female
+                <p>{{ data['gender'] }}</p>
                 <h2>Email</h2>
-                <input type="text"
-                class="input" value="">
+                <p>{{ data['email'] }}</p>
                 <h2>Contact No.</h2>
-                <input type="text"
-                class="input" value="">
+                <p>{{ data['phno'] }}</p>
             </div>
             <div class="box">
                 <h1>Documents</h1>
                 <hr>
                 <h2>10th Marksheet</h2>
-                <input type="file"
-                class="input" value="">
+                <p><p> {{ data['10ms'] }} </p></p>
                 <h2>12th Marksheet</h2>
-                <input type="file"
-                class="input" value="">
+                <p><p> {{ data['12ms'] }} </p></p>
                 <h2>Adhar No.</h2>
-                <input type="text"
-                class="input" value="">
+                <p>{{ data['aadhar'] }}</p>
+                <p style="margin-top: 10px;">Enter 12 digit aadhar number</p>
                 </div>
             <div class="box">
                 <h1>About You...</h1>
                 <hr>
-                <i class="fab fa-github -lg"></i>
-                <input type="text"
-                class="input" value="">
-                <p></p>
-                <i class="fab fa-linkedin -lg"></i>
-                <input type="text"
-                class="input" value="">
+                <i class="fab fa-github -lg" style="margin-top: 15px;"></i>
+                <a href="{{ data['github'] }}">{{ data['github'] }}</a>
+                <br>
+                <i class="fab fa-linkedin -lg" style="margin-top: 5px;"></i>
+                <a href="{{ data['linkedin'] }}">{{ data['linkedin'] }}</a>
                 <h2>Portfolic Web</h2>
-                <input type="link" value="">
+                <p>{{ data['pweb'] }}</p>
                 <h2>Skills</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['skills'] }} </p>
                 <h2>Achivements</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['achievements'] }} </p>
                 <h2>Extra Achivements</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['extraachievements'] }} </p>
             </div> 
             <div class="box">
                 <h1>Marksheets(cgpa)</h1>
                 <hr>
                 <h2>First Year</h2>
-                <input type="file"
-                class="input" value="">
-                <h2>Second Year</h2>
-                <input type="file"
-                class="input" value="">
+                <p> {{ data['fe'] }} </p>
+                <h2>Second Year</h2> 
+                <p> {{ data['se'] }} </p>
                 <h2>Third Year</h2>
-                <input type="file"
-                class="input" value="">
+                <p> {{ data['te'] }} </p>
                 <h2>Fourth Year</h2>
-                <input type="file"
-                class="input" value="">
+                <p> {{ data['be'] }} </p>
             </div>
             <div class="box">
                 <h1>Other</h1>
                 <hr>
                 <h2>PRN</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['prn'] }} </p>
                 <h2>ERP</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['erp'] }} </p>
                 <h2>ABCid</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['abc'] }} </p>
                 <h2>When can you join?</h2>
-                <input type="text"
-                class="input" value="">
+                <p> {{ data['join'] }} </p>
             </div>   
         </div>
-        
+    </section>
+
+{% else %}
+    <section class="first">
+        <div class="first-half">
+            <h1>Profile</h1>
+        </div>
+        <form method="post" action="/profile" enctype="multipart/form-data">
+        <div class="info">
+            <div class="box">
+                <h1>Personal Info</h1>
+                <hr>
+                <h2>Full Name</h2>
+                <input type="text" name="Fullname"
+                class="input" value="" required>
+                <h2>Date of Birth</h2>
+                <input type="text" name="DOB"
+                class="input" value="" required>
+                <h2>Gender</h2>
+                <input type="radio" name="gender"
+                class="input" required>Male
+                <input type="radio" name="gender"
+                class="input" required>Female
+                <h2>Email</h2>
+                <input type="email" name="email"
+                class="input" value="" required>
+                <h2>Contact No.</h2>
+                <input type="text" name="phno" pattern="\d{10}"
+                class="input" value="" required style="margin-bottom: 10px;">
+            </div>
+            <div class="box">
+                <h1>Documents</h1>
+                <hr>
+                <h2>10th Marksheet</h2>
+                <input type="file" name="10ms"
+                class="input" value="" required>
+                <h2>12th Marksheet</h2>
+                <input type="file" name="12ms"
+                class="input" value="" required>
+                <h2>Adhar No.</h2>
+                <input type="number" name="aadhar" pattern="\d{12}"
+                class="input" value="" required>
+                <p style="margin-top: 10px;">Enter 12 digit aadhar number</p>
+                </div>
+            <div class="box">
+                <h1>About You...</h1>
+                <hr>
+                <i class="fab fa-github -lg" style="margin-top: 15px;"></i>
+                <input type="link" name="github"
+                class="input" value="" required>
+                <p></p>
+                <i class="fab fa-linkedin -lg" style="margin-top: 5px;"></i>
+                <input type="link" name="linkedin"
+                class="input" value="" required>
+                <h2>Portfolic Web</h2>
+                <input type="link" name="pweb" value="">
+                <h2>Skills</h2>
+                <input type="text" name="skills"
+                class="input" value="" required>
+                <h2>Achivements</h2>
+                <input type="text" name="achievements"
+                class="input" value="" required>
+                <h2>Extra Achivements</h2>
+                <input type="text" name="extraachievements"
+                class="input" value="" required>
+            </div> 
+            <div class="box">
+                <h1>Marksheets(cgpa)</h1>
+                <hr>
+                <h2>First Year</h2>
+                <input type="file" name="fe"
+                class="input" value="" required>
+                <h2>Second Year</h2> 
+                <input type="file" name="se"
+                class="input" value="" required>
+                <h2>Third Year</h2>
+                <input type="file" name="te"
+                class="input" value="" required>
+                <h2>Fourth Year</h2>
+                <input type="file" name="be"
+                class="input" value="" required>
+            </div>
+            <div class="box">
+                <h1>Other</h1>
+                <hr>
+                <h2>PRN</h2>
+                <input type="text" name="prn"
+                class="input" value="" required>
+                <h2>ERP</h2>
+                <input type="text" name="erp"
+                class="input" value="" required>
+                <h2>ABCid</h2>
+                <input type="text" name="abc"
+                class="input" value="" required>
+                <h2>When can you join?</h2>
+                <input type="text" name="join"
+                class="input" value="" required>
+            </div>   
+        </div>
         <div class="container">
-            <button class="bottom-center">Save</button>
+            <button type="submit" class="bottom-center">Save</button>
           </div>
-          
+        </form>
+    </section>
+{% endif %}
+
     
 </body>
 </html>
