@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
-from db import DB, DBException
+
 import requests
 import os
 
@@ -7,7 +7,6 @@ app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 app.config['PROFILE_FOLDER'] = 'profile_data'
 
-db = DB()
 
 
 @app.route('/')
