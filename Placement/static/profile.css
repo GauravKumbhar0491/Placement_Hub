@@ -140,6 +140,7 @@ input {
     border-top: #fff;
     border-left: #fff;
     border-right: #fff;
+    border-bottom: 1px solid rgb(42, 42, 42);
     font-size: 20px;
     font-family: Helvetica, sans-serif;
     color: rgb(57, 72, 103);

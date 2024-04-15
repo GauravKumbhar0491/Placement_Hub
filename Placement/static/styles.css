@@ -18,8 +18,8 @@ body {
 }
 
 .box .main-img {
-    height: 900px;
-    width: 820px;
+    height: 1000px;
+    width: 920px;
     background-image: url("first-page.png");
     background-size: cover;
 }
@@ -39,7 +39,7 @@ body {
 }
 
 .box .box1{
-    width: 100%;
+    width: 130%;
     height: 30%;
     background-image: url("college.png");
     background-size: cover;
@@ -61,7 +61,7 @@ body {
 }
 
 .box .box3{
-    width: 47%;
+    width: 49%;
     height: 23%;
     background-image: url("img5.png");
     background-size: cover;
@@ -86,7 +86,7 @@ body {
 }
 
 .box .sub1{
-    width: 65%;
+    width: 75%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-left: 210px;
@@ -95,7 +95,7 @@ body {
 }
 
 .box .sub4{
-    width: 75%;
+    width: 85%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-top: 80px;
@@ -104,7 +104,7 @@ body {
 }
 
 .box .sub2{
-    width: 65%;
+    width: 75%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-left: 210px;
@@ -114,7 +114,7 @@ body {
 }
 
 .box .sub5{
-    width: 75%;
+    width: 85%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-top: 80px;
@@ -123,7 +123,7 @@ body {
 }
 
 .box .sub3{
-    width: 65%;
+    width: 75%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-left: 210px;
@@ -133,7 +133,7 @@ body {
 }
 
 .box .sub6{
-    width: 75%;
+    width: 85%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-top: 80px;
@@ -142,7 +142,7 @@ body {
 }
 
 .box .about-us{
-    width: 65%;
+    width: 75%;
     height: 15%;
     background-color: rgb(155, 164, 180);
     margin-left: 210px;

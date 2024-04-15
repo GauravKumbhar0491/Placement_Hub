@@ -5,13 +5,13 @@
     outline: none;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
-    
+
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
-    background-image: url("my\ first\ design.jpg");
+    background-image: url("my first design.jpg");
     background-size: cover;
 }
 
@@ -31,7 +31,7 @@ body {
 }
 
 .sidebar:hover {
-    width: 240px;
+    width: 243px;
     transition: 0.5s;
 }
 
@@ -84,8 +84,8 @@ body {
 /*-----main loop-----*/
  .main {
     padding: 0.5px;
-    width: 80%;
-} 
+    width: 87%;
+}
 .main-loop {
     font-family: Helvetica, sans-serif;
     width: 100%;
@@ -159,7 +159,7 @@ body {
 }
 
 table thead tr{
-    
+
     color: #fff;
     background: rgb(57, 72, 103);
     text-align: center;
