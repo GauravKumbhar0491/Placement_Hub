@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,73 @@
     <link rel="stylesheet" href="/static/coordinatordash.css">
     <!-- <link rel="stylesheet" href="/static/style.css" /> -->
     <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
+
 <body>
-    
-<!--     <script type="text/javascript>
-        alert("Company added Successfully")
-    </script> -->
+
     <div class="container" style="margin-top: 200px;">
         <h2>Coordinator Dashboard</h2>
-        <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data" >
+        <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data">
             <div class="form-group">
-                <label for="companyName">Company Name:</label>
+                <label for="companyName">Company Name :</label>
                 <input type="text" id="companyName" name="companyName" required>
             </div>
             <div class="form-group">
-                <label for="companyDescription">Description:</label>
+                <label for="Description">Description :</label>
                 <input type="text" id="companyDescription" name="companyDescription" required>
             </div>
             <div class="form-group">
-                <label for="companyLocation">Registration Link:</label>
+                <label for="companyRole">Role:</label>
+                <input type="text" id="companyRole" name="companyRole" required>
+            </div>
+            <div class="form-group">
+                <label for="companyLocation">Company Location :</label>
                 <input type="link" id="companyLocation" name="companyLocation" required>
             </div>
             <div class="form-group">
-                <label for="previousYearCGPA">Eligibility Criteria:</label>
-                <input type="text" id="previousYearCGPA" name="previousYearCGPA" required>
+                <label for="Description">Branch :</label>
+                <input type="text" id="stud_branch" name="stud_branch" required>
+            </div>
+            <div class="form-group">
+                <label for="dueDate">Due Date :</label>
+                <input type="text" id="dueDate" name="dueDate" required>
             </div>
             <div class="form-group">
                 <input type="submit" value="Add Company">
             </div>
         </form>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Company Name</th>
+                    <th>Role</th>
+                    <th>Description</th>
+                    <th>Branch</th>
+                    <th>Due Date</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for index, offer in enumerate(offers): %}
+                <tr>
+                    <th>{{ index + 1 }}</th>
+                    <th>{{ offer['name'].strip() }}</th>
+                    <th>{{ offer['role'].strip() }}</th>
+                    <th>{{ offer['description'].strip() }}</th>
+                    <th>{{ offer['branch'].strip() }}</th>
+                    <th>{{ offer['due_date'].strip() }}</th>
+                    <th><a href="{{ offer['link'] }}"><button>Delete</button></a></th>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
     </div>
 </body>
+
 </html>
