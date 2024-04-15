@@ -6,7 +6,7 @@
     padding: 0;
     border: none;
     outline: none;
-    /box-sizing: border-box;/
+    /* /box-sizing: border-box;/ */
     font-family: Poppinsa, sans-serif;
     
 }
@@ -84,7 +84,7 @@ body {
     align-items: center;
 }
 
-/-----main loop-----/
+/* /-----main loop-----/ */
 .main {
     padding: 20px;
     width: 80%;
@@ -96,7 +96,7 @@ body {
     display: flex;
 }
 
-/------Table-----/
+/* /------Table-----/ */
 .company-names {
     margin-top: 45px;
     text-transform: capitalize;
