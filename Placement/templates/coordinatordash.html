@@ -8,23 +8,6 @@
     <!-- <link rel="stylesheet" href="/static/style.css" /> -->
     <!-- Font Awesome Cdn Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const form = document.getElementById("companyForm");
-            form.addEventListener("submit", function(event) {
-                event.preventDefault(); // Prevent the form from submitting normally
-                
-                // Here you can add code to handle the form submission, like sending data to the server
-                
-                // For demonstration purposes, let's show an alert
-                alert("Company added successfully!");
-                
-                // You can also redirect the user to another page after successful submission
-                // window.location.href = "success.html";
-            });
-        });
-    </script>
-
 </head>
 <body>
     
@@ -33,7 +16,7 @@
     </script> -->
     <div class="container" style="margin-top: 200px;">
         <h2>Coordinator Dashboard</h2>
-        <form id="companyForm">
+        <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data" >
             <div class="form-group">
                 <label for="companyName">Company Name:</label>
                 <input type="text" id="companyName" name="companyName" required>

@@ -80,7 +80,7 @@
                 <button>Apply</button>        
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="company-names">
         <div class="company-names-list">
@@ -96,13 +96,16 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {% for index, offer in enumerate(offers): %}
                     <tr>
-                        <th>01</th>
-                        <th>Name</th>
-                        <th>x</th>
-                        <th>*</th>
-                        <th><button>Apply</button></th>
+                        <th>{{ index }}</th>
+                        <th>{{ offer['name'].strip() }}</th>
+                        <th>{{ offer['description'].strip() }}</th>
+                        <th>{{ offer['required_cgpa'].strip() }}</th>
+                        <th><a href="{{ offer['link'] }}"><button>Apply</button></a></th>
                     </tr>
+                    {% endfor %}
+
                 </tbody>
             </table>
         </div>

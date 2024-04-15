@@ -39,6 +39,7 @@ def profile():
 
     if request.method == "POST":
         data = dict(request.form)
+        print(request.form)
 
         ssc = request.files['10ms']
         hsc = request.files['12ms']
@@ -56,15 +57,22 @@ def profile():
         })
         try:
             os.mkdir(f"{app.config['PROFILE_FOLDER']}")
-            os.mkdir(f"{app.config['PROFILE_FOLDER']}/{data['email']}")
+        except FileExistsError:
+            pass
+        try:
+            os.mkdir(os.path.join(app.config['PROFILE_FOLDER'], data['email']))
         except FileExistsError:
             pass
         for file in request.files.values():
             file.save(os.path.join(app.config['PROFILE_FOLDER'], data['email'], file.filename))
 
         db.insert_info(data)
-
         return render_template('profile.html', data=data)
+
+    info = db.get_info(request.cookies.get('email'))
+
+    if info:
+        return render_template('profile.html', data=info)
 
     return render_template('profile.html')
 
@@ -74,11 +82,24 @@ def dashboard():
     if not request.cookies.get('email'):
         return redirect(url_for('stud_login'))
 
-    return render_template('dashboard.html')
+    job_offers = db.get_offers()
+
+    return render_template('dashboard.html', offers=job_offers, enumerate=enumerate)
 
 
-@app.route('/coordinator')
+@app.route('/coordinator', methods=['GET', 'POST'])
 def coordinator():
+    if request.method == "POST":
+        try:
+            db.checck_user_password_coordinator(request.form['email'], request.form['password'])
+        except DBException.UserDoesNotExists:
+            return render_template('coordinator.html')
+
+        resp = make_response(redirect(url_for('coordinatordash')))
+        resp.set_cookie('coordinatoremail', request.form['email'])
+
+        return resp
+
     return render_template('coordinator.html')
 
 
@@ -106,6 +127,17 @@ def register():
 
 @app.route('/coordinatordash', methods=['GET', 'POST'])
 def coordinatordash():
+    if request.method == "POST":
+        db.insert_job_offer({
+            'email': request.cookies.get('coordinatoremail'),
+            'name': request.form['companyName'],
+            'link': request.form['companyLocation'],
+            'description': request.form['companyDescription'],
+            'required_cgpa': request.form['previousYearCGPA'],
+        })
+
+        return render_template('coordinatordash.html')
+
     return render_template('coordinatordash.html')
 
 
