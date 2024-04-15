@@ -80,7 +80,7 @@
                 <button>Apply</button>        
             </div>
         </div>
-    </div>
+    </section>
 
     <section class="company-names">
         <div class="company-names-list">
@@ -102,7 +102,7 @@
                         <th>{{ offer['name'].strip() }}</th>
                         <th>{{ offer['description'].strip() }}</th>
                         <th>{{ offer['required_cgpa'].strip() }}</th>
-                        <th><button>Apply</button></th>
+                        <th><a href="{{ offer['link'] }}"><button>Apply</button></a></th>
                     </tr>
                     {% endfor %}
 
