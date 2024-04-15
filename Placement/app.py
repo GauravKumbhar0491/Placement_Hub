@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+from db import DB, DBException
 
 import requests
 import os
 
+db = DB()
+
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 app.config['PROFILE_FOLDER'] = 'profile_data'
-
 
 
 @app.route('/')
@@ -39,7 +41,6 @@ def profile():
 
     if request.method == "POST":
         data = dict(request.form)
-        print(request.form)
 
         ssc = request.files['10ms']
         hsc = request.files['12ms']
@@ -63,6 +64,7 @@ def profile():
             os.mkdir(os.path.join(app.config['PROFILE_FOLDER'], data['email']))
         except FileExistsError:
             pass
+
         for file in request.files.values():
             file.save(os.path.join(app.config['PROFILE_FOLDER'], data['email'], file.filename))
 
