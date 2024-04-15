@@ -32,21 +32,15 @@
                 </a>
             </li>
             <li>
-                <a href="/careers">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Careers</span>
-                </a>
-            </li>
-            <li>
                 <a href="/faq">
                     <i class="fas fa-question-circle"></i>
                     <span>FAQ</span>
                 </a>
             </li>
             <li>
-                <a href="/testimonials">
+                <a href="/test">
                     <i class="fas fa-star"></i>
-                    <span>Testimonials</span>
+                    <span>Testimonial</span>
                 </a>
             </li>
             <li>
@@ -63,49 +57,34 @@
         <div class="main-loop">
             <h1>Dashboard</h1>
         </div>
-        <div class="main-company">
-            <div class="card">
-                <h3>Company Name</h3>
-                <p>Description</p>
-                <button>Apply</button>        
-            </div>
-            <div class="card">
-                <h3>Company Name</h3>
-                <p>Description</p>
-                <button>Apply</button>        
-            </div>
-            <div class="card">
-                <h3>Company Name</h3>
-                <p>Description</p>
-                <button>Apply</button>        
-            </div>
-        </div>
-    </div>
+    
+    <!-- Table -->
 
     <section class="company-names">
         <div class="company-names-list">
-            <h1>Company Names</h1>
+            <h1>List of Companies</h1>
             <table class="table">
                 <thead>
                     <tr>
                         <th>No.</th>
                         <th>Company Name</th>
+                        <th>Role</th>
                         <th>Description</th>
-                        <th>Pointer required</th>
-                        <th>Details</th>
+                        <th>Branch</th>
+                        <th>Location</th>
+                        <th>Apply</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for index, offer in enumerate(offers): %}
                     <tr>
-                        <th>{{ index }}</th>
-                        <th>{{ offer['name'].strip() }}</th>
-                        <th>{{ offer['description'].strip() }}</th>
-                        <th>{{ offer['required_cgpa'].strip() }}</th>
-                        <th><a href="{{ offer['link'] }}"><button>Apply</button></a></th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th>#</th>
+                        <th><button>Apply</button></th>
                     </tr>
-                    {% endfor %}
-
                 </tbody>
             </table>
         </div>
