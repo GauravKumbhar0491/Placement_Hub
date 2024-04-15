@@ -40,6 +40,7 @@ def profile():
 
     if request.method == "POST":
         data = dict(request.form)
+        print(request.form)
 
         ssc = request.files['10ms']
         hsc = request.files['12ms']
@@ -57,15 +58,22 @@ def profile():
         })
         try:
             os.mkdir(f"{app.config['PROFILE_FOLDER']}")
-            os.mkdir(f"{app.config['PROFILE_FOLDER']}/{data['email']}")
+        except FileExistsError:
+            pass
+        try:
+            os.mkdir(os.path.join(app.config['PROFILE_FOLDER'], data['email']))
         except FileExistsError:
             pass
         for file in request.files.values():
             file.save(os.path.join(app.config['PROFILE_FOLDER'], data['email'], file.filename))
 
         db.insert_info(data)
-
         return render_template('profile.html', data=data)
+
+    info = db.get_info(request.cookies.get('email'))
+
+    if info:
+        return render_template('profile.html', data=info)
 
     return render_template('profile.html')
 

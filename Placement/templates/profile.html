@@ -62,7 +62,7 @@
         </div>
     </div>
 
-{% if data %}
+{% if data: %}
     <script type="text/javascript">
         alert("Profile Completed")
     </script>
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-{% else %}
+{% else: %}
     <section class="first">
         <div class="first-half">
             <h1>Profile</h1>
@@ -157,9 +157,9 @@
                 <input type="text" name="DOB"
                 class="input" value="" required>
                 <h2>Gender</h2>
-                <input type="radio" name="gender"
+                <input type="radio" name="gender" value="Male"
                 class="input" required>Male
-                <input type="radio" name="gender"
+                <input type="radio" name="gender" value="Female"
                 class="input" required>Female
                 <h2>Email</h2>
                 <input type="email" name="email"
