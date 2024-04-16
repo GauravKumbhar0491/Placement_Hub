@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
 from db import DB, DBException
+from flask_cors import cross_origin
 
 import requests
 import os
@@ -9,7 +10,6 @@ app.secret_key = 'supersecretkey'
 app.config['PROFILE_FOLDER'] = 'profile_data'
 
 db = DB()
-
 
 @app.route('/')
 def main_page():
@@ -29,6 +29,7 @@ def stud_login():
             resp.set_cookie('email', request.form['email'])
             return resp
         else:
+            print(resp.json())
             return render_template('stud_login.html', login_error=resp.json()['error'])
 
     return render_template('stud_login.html')
@@ -128,6 +129,7 @@ def register():
 
 
 @app.route('/coordinatordash', methods=['GET', 'POST', 'DELETE'])
+@cross_origin(origin='*')
 def coordinatordash():
     if not request.cookies.get('coordinatoremail'):
         return redirect(url_for('coordinator'))
@@ -136,9 +138,8 @@ def coordinatordash():
         db.insert_job_offer({
             'email': request.cookies.get('coordinatoremail'),
             'name': request.form['companyName'],
-            'link': request.form['companyLocation'],
+            'link': request.form['registrationLink'],
             'role': request.form['companyRole'],
-            'location': request.form['companyLocation'],
             'stud_branch': request.form['stud_branch'],
             'due_date': request.form['dueDate'],
             'description': request.form['companyDescription'],

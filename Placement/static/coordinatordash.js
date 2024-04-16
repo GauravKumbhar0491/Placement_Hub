@@ -4,7 +4,7 @@ function sendData() {
 
     console.log(Object.fromEntries(formData))
     fetch(url, {
-        method: "DELETE", // Change the method according to your API
+        method: "DELETE",
         body: JSON.stringify(Object.fromEntries(formData)),
         headers: {
             "Content-Type": "application/json"
@@ -18,6 +18,6 @@ function sendData() {
         }
     )
     .catch(error => {
-    console.error('Error:', error);
+    console.log('Error:', error);
     });
 }

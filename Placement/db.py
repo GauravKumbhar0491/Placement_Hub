@@ -56,19 +56,17 @@ class DB:
         role = companydata['role']
         description = companydata['description']
         stud_branch = companydata['stud_branch']
-        location = companydata['location']
         link = companydata['link']
         due_date = companydata['due_date']
 
         with self.connection.cursor() as cursor:
-            cursor.execute("""insert into coordinator (email, name, role, description, branch, location, link, due_date) 
-            values ('{email}', '{name}', '{role}', '{description}', '{branch}', '{location}', '{link}', '{due_date}')""".format(
+            cursor.execute("""insert into coordinator (email, name, role, description, branch, link, due_date) 
+            values ('{email}', '{name}', '{role}', '{description}', '{branch}', '{link}', '{due_date}')""".format(
                 email=email,
                 name=name,
                 role=role,
                 description=description,
                 branch=stud_branch,
-                location=location,
                 link=link,
                 due_date=due_date
             ))
@@ -85,7 +83,7 @@ class DB:
                     "email": offer[1],
                     'name': offer[2],
                     "role": offer[3],
-                    "description": offer[5],
+                    "description": offer[4],
                     "branch": offer[5],
                     "location": offer[6],
                     "link": offer[7],
