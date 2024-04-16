@@ -100,3 +100,15 @@ th, td {
 th {
     background: transparent;
 }
+
+.delete-button {
+    font-size: medium;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+
+.delete-button:hover {
+    color: #ef0000;
+    cursor: pointer;
+}
