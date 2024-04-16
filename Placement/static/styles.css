@@ -2,19 +2,33 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 
+.title{
+  font-family: Poppins,sans-serif;
+  color: aliceblue; 
+  text-align: right;
+  font-size: 100px; 
+  margin-right: 100px;
+}
 
+.about{
+  color: whitesmoke;
+  font-size: 35px;
+  
+  margin-left: 1200px ;
+ margin-top: 250px;
+}
 .button-17 {
     
     margin-top: 50px;
     margin-left: 70px;
     align-items: center;
     appearance: none;
-    background-color: #fff;
+    background-color: #32539b;
     border-radius: 24px;
     border-style: none;
     box-shadow: rgba(0, 0, 0, .2) 0 3px 5px -1px,rgba(0, 0, 0, .14) 0 6px 10px 0,rgba(0, 0, 0, .12) 0 1px 18px 0;
     box-sizing: border-box;
-    color: #3c4043;
+    color: #ffffff;
     cursor: pointer;
     display: inline-flex;
     fill: currentcolor;
