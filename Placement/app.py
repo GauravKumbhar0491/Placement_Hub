@@ -1,10 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
-from db import DB, DBException
 
 import requests
 import os
-
-db = DB()
 
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
