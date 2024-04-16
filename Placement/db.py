@@ -26,6 +26,7 @@ class DB:
     def insert_user(self, data):
         with self.connection.cursor() as cursor:
             self.check_email(data['email'], 'student')
+            self.check_name(data['name'], 'student')
             cursor.execute(f"""
             insert into student (email, name, password)
             values (\'{data['email']}\', \'{data['name']}\',\'{data['password']}\')
@@ -137,6 +138,14 @@ class DB:
         email = cursor.fetchall()
         if email:
             raise DBException.UserAlreadyExists(f"{email} already exists")
+        cursor.close()
+
+    def check_name(self, name, table):
+        cursor = self.connection.cursor()
+        cursor.execute(f"select name from {table} where name='{name}'")
+        name = cursor.fetchall()
+        if name:
+            raise DBException.UserAlreadyExists(f"{name} already exists")
         cursor.close()
 
     def delete_job_offer(self, jobId):

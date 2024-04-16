@@ -1,19 +1,18 @@
-/*  import google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-
 * {
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
     box-sizing: border-box;
-    font-family: Poppinsa, sans-serif;
-    font-size: 22px;
+    font-family: Helvetica, sans-serif;
+
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
+    background-image: url("my\ first\ design.jpg");
+    background-size: cover;
 }
 
 .sidebar {
@@ -21,9 +20,9 @@ body {
     top: 0;
     left: 0;
     bottom: 0;
-    width: 120px;
-    height: 150vh;
-    padding: 0em;
+    width: 90px;
+    height: 99vh;
+    padding: 0 0.8rem;
     color: #fff;
     overflow: hidden;
     transition: all 0.5s linear;
@@ -32,13 +31,13 @@ body {
 }
 
 .sidebar:hover {
-    width: 250px;
+    width: 240px;
     transition: 0.5s;
 }
 
 .logo {
-    height: 130px;
-    padding: 15px;
+    height: 50px;
+    padding: 12px;
 }
 
 .main {
@@ -50,14 +49,12 @@ body {
 
 .main li {
     padding: 1rem;
-    margin-left: 36px;
-    border: 8px;
+    margin: 8px 0;
+    border-radius: 8px;
     transition: all 0.5s ease-in-out;
-    gap: rem;
 }
 
 .main li:hover {
-    border-radius: 5%;
     background: #e0e0e058;
 }
 
@@ -76,7 +73,7 @@ body {
 }
 
 .main a i {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
 }
 
 .college-logo {
@@ -84,7 +81,8 @@ body {
     align-items: center;
 }
 
-/* /-------first-------/ */
+
+/*-------first-------*/
 .first{
     padding: 10px;
     align-items: center;
@@ -99,123 +97,69 @@ body {
 
 .info {
     display: flex;
-    margin-top: 50px;
+    margin-top: 10px;
     width: 100%;
     height: 70%;
 }
 
-.info .box1 {
-    width: 1650px;
-    height: 40%;
-    /* /margin: 10px;/ */
-    background: #fff;
-    font-size: 22px;
-    border-radius: 20px;
-    padding: 10px;
-    
-}
-.info .box2 {
-    width: 1650px;
-    height: 60%;
-    /* /margin: 10px;/ */
-    font-size: 19px;
-    margin-top: 200px;
-    margin-left: -1650px;
-    background: #fff;
-    border-radius: 20px;
-    padding: 10px;
-    
-}
-.info .box3 {
-    width: 1650px;
-    height: 41%;
-    /* /margin: 10px;/ */
-    font-size: 22px;
-    margin-top: 390px;
-    margin-left: -1650px;
-    background: #fff;
-    border-radius: 20px;
-    padding: 10px;
-    
-}
-
-.info .box4 {
-    width: 1650px;
-    height: 40%;
-   /* /margin: 10px;/ */
-    font-size: 22px;
-    margin-top: 595px;
-    margin-left: -1650px;
-    background: #fff;
-    
-    border-radius: 20px;
-    padding: 10px;
-    
-}
-
-.info .box5 {
-    width: 1650px;
-    height: 29%;
-   /* /margin: 10px;/ */
-    font-size: 22px;
-    margin-top: 810px;
-    margin-left: -1650px;
-    background: #fff;
-    border-radius: 20px;
-    padding: 10px;
-    
-}
-
-h3 {
-    color: rgb(20, 39, 78);
-    overflow: hidden;
-    margin-bottom: 25px;
-    text-transform: capitalize;
-}
-
-input {
-    border: 1px solid black;
-    margin-right: 17px;
-    margin-bottom: 30px;
-    font-size: 20px;
-    font-family: Helvetica, sans-serif;
-    color: rgb(57, 72, 103);
-}
-
-.container1 {
-    position: relative;
-    height: 70px; 
+.box1{
     display: flex;
-    justify-content: center;
-    align-items: flex-end; 
+    margin-top: 10px;
 }
-  
-.bottom-left {
-    position: absolute;
-    font-size: 23px;
-    color: rgb(20, 39, 78);
-    height: 55px;
-    width: 125px;
-    bottom: -200px; 
-    margin-left: -1000px;
+
+.info .box {
+    width: 290px;
+    margin: 10px;
+    background: #fff;
+    text-align: center;
+    border-radius: 20px;
+    padding: 10px;
     box-shadow: 0 20px 35px rgb(65, 64, 64);
 }
 
-.container2 {
+
+.info .box h1{
+    font-family: Helvetica, sans-serif;
+    color: rgb(20, 39, 78);
+    overflow: hidden;
+}
+
+.info .box h1:hover {
+    transition: linear 0.5s;
+    font-size: xx-large;
+}
+
+.info .box h2 {
+    font-family: Helvetica, sans-serif;
+    margin: 20px;
+    text-transform: capitalize;
+    color: rgb(155, 164, 180);
+}
+
+input {
+    border-top: #fff;
+    border-left: #fff;
+    border-right: #fff;
+    font-size: 20px;
+    font-family: Helvetica, sans-serif;
+    color: rgb(57, 72, 103);
+
+}
+
+.container {
     position: relative;
-    height: 70px; 
+    height: 70px;
     display: flex;
     justify-content: center;
-    align-items: flex-end; 
+    align-items: flex-end;
 }
- 
-.bottom-right{
+
+.bottom-center {
     position: absolute;
     font-size: 23px;
     color: rgb(20, 39, 78);
     height: 55px;
     width: 125px;
-    bottom: -149px; 
-    margin-left: 1000px;
+    bottom: 0px;
     box-shadow: 0 20px 35px rgb(65, 64, 64);
 }
