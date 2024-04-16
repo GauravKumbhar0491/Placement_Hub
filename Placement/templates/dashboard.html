@@ -72,19 +72,23 @@
                         <th>Description</th>
                         <th>Branch</th>
                         <th>Location</th>
+                        <th>Due Date</th>
                         <th>Apply</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>#</th>
-                        <th>#</th>
-                        <th>#</th>
-                        <th>#</th>
-                        <th>#</th>
-                        <th>#</th>
-                        <th><button>Apply</button></th>
-                    </tr>
+                    {% for index, offer in enumerate(offers): %}
+                        <tr>
+                            <th> {{ index+1 }} </th>
+                            <th> {{ offer['name'] }} </th>
+                            <th> {{ offer['role'] }}</th>
+                            <th> {{ offer['description'] }} </th>
+                            <th> {{ offer['branch'] }} </th>
+                            <th> {{ offer['location'] }} </th>
+                            <th> {{ offer['due_date'] }} </th>
+                            <th><a href="{{ offer['link'] }}"><button type="button">Apply</button></a></th>
+                        </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
