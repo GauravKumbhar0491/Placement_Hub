@@ -7,7 +7,7 @@ class DB:
 
     def check_user_password(self, email, password):
         cursor = self.connection.cursor()
-        cursor.execute(f"SELECT email,name FROM student WHERE email='{email}' AND password='{password}' LIMIT 1")
+        cursor.execute(f"SELECT email, name FROM student WHERE email='{email}' AND password='{password}' LIMIT 1")
         output = cursor.fetchall()
         cursor.close()
 
@@ -36,7 +36,7 @@ class DB:
         with self.connection.cursor() as cursor:
             # self.check_email(data['email'], 'personal_info')
             cursor.execute(
-                f"insert into personal_info  (Full_name ,Date_of_birth,Gender,Email, Contact_no) values (\'{data['Fullname']}\', \'{data['DOB']}\',\'{data['gender']}\',\'{data['email']}\',\'{data['phno']}\')")
+                f"insert into personal_info (Full_name ,Date_of_birth,Gender,Email, Contact_no) values (\'{data['Fullname']}\', \'{data['DOB']}\',\'{data['gender']}\',\'{data['email']}\',\'{data['phno']}\')")
 
             cursor.execute(f"""insert into documents (email,10th_marksheet,12th_marksheet,Adhar_No,FE_cgpa,SE_cgpa,TE_cgpa,BE_cgpa) 
             values (\'{data['email']}\',\'{data['10ms']}\',\'{data['12ms']}\',\'{data['aadhar']}\',\'{data['fe']}\',\'{data['se']}\',\'{data['te']}\',\'{data['be']}\')
@@ -46,7 +46,6 @@ class DB:
                 f"""insert into other (email,PRN,ERP,ABCid ,When_you_can_join) values (\'{data['email']}\',\'{data['prn']}\',\'{data['erp']}\',\'{data['abc']}\',\'{data['join']}\')
             """)
 
-            # TODO: FIX THIS
             cursor.execute(f"""insert into about_you (Email,Github,Linkdin,Portfolic,Skils,Achivements,Extra_Achivements) values (\'{data['email']}\',\'{data['github']}\',\'{data['linkedin']}\',\'{data['pweb']}\',\'{data['skills']}\',\'{data['achievements']}\',\'{data['extraachievements']}\');""")
             self.connection.commit()
 
@@ -64,15 +63,18 @@ class DB:
 
     def get_offers(self):
         with self.connection.cursor() as cursor:
-            cursor.execute(f"""select * from coordinator""")
+            cursor.execute("select * from coordinator")
 
             offers = []
             for offer in cursor.fetchall():
                 offers.append({
+                    "id": offer[0],
                     "name": offer[2],
-                    "description": offer[3],
-                    "link": offer[4],
-                    "required_cgpa": offer[5],
+                    "role": offer[3],
+                    "description": offer[4],
+                    "branch": offer[5],
+                    "location": offer[6],
+                    "link": offer[7],
                 })
 
         return offers
@@ -82,6 +84,7 @@ class DB:
             data = {}
             cursor.execute(f"""select * from personal_info where Email='{email}' LIMIT 1;""")
             output = cursor.fetchall()
+            print(output)
             if not output:
                 return None
             data['Fullname'] = output[0][1]
@@ -130,8 +133,3 @@ class DBException(Exception):
 
     class UserDoesNotExists(Exception):
         pass
-
-
-if __name__ == '__main__':
-    db = DB()
-    db.get_info('admin@admin.com')
