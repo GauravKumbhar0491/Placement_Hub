@@ -52,13 +52,25 @@ class DB:
     def insert_job_offer(self, companydata):
         email = companydata['email']
         name = companydata['name']
-        link = companydata['link']
-        required_cgpa = companydata['required_cgpa']
+        role = companydata['role']
         description = companydata['description']
+        stud_branch = companydata['stud_branch']
+        location = companydata['location']
+        link = companydata['link']
+        due_date = companydata['due_date']
 
         with self.connection.cursor() as cursor:
-            cursor.execute(f"""insert into coordinator (email, company_name, company_description, registration_link, required_cgpa)
-            values ('{email}','{name}', '{description}', '{link}', '{required_cgpa}')""")
+            cursor.execute("""insert into coordinator (email, name, role, description, branch, location, link, due_date) 
+            values ('{email}', '{name}', '{role}', '{description}', '{branch}', '{location}', '{link}', '{due_date}')""".format(
+                email=email,
+                name=name,
+                role=role,
+                description=description,
+                branch=stud_branch,
+                location=location,
+                link=link,
+                due_date=due_date
+            ))
         self.connection.commit()
 
     def get_offers(self):
@@ -69,12 +81,14 @@ class DB:
             for offer in cursor.fetchall():
                 offers.append({
                     "id": offer[0],
-                    "name": offer[2],
+                    "email": offer[1],
+                    'name': offer[2],
                     "role": offer[3],
-                    "description": offer[4],
+                    "description": offer[5],
                     "branch": offer[5],
                     "location": offer[6],
                     "link": offer[7],
+                    "due_date": offer[8]
                 })
 
         return offers
@@ -84,7 +98,6 @@ class DB:
             data = {}
             cursor.execute(f"""select * from personal_info where Email='{email}' LIMIT 1;""")
             output = cursor.fetchall()
-            print(output)
             if not output:
                 return None
             data['Fullname'] = output[0][1]
@@ -125,6 +138,12 @@ class DB:
         if email:
             raise DBException.UserAlreadyExists(f"{email} already exists")
         cursor.close()
+
+    def delete_job_offer(self, jobId):
+        with self.connection.cursor() as cursor:
+            cursor.execute("delete from coordinator where id='{jobId}'".format(jobId=jobId))
+
+        self.connection.commit()
 
 
 class DBException(Exception):

@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+from db import DB, DBException
 
 import requests
 import os
@@ -6,6 +7,8 @@ import os
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 app.config['PROFILE_FOLDER'] = 'profile_data'
+
+db = DB()
 
 
 @app.route('/')
@@ -124,25 +127,37 @@ def register():
     return resp
 
 
-@app.route('/coordinatordash', methods=['GET', 'POST'])
+@app.route('/coordinatordash', methods=['GET', 'POST', 'DELETE'])
 def coordinatordash():
+    if not request.cookies.get('coordinatoremail'):
+        return redirect(url_for('coordinator'))
+
     if request.method == "POST":
         db.insert_job_offer({
             'email': request.cookies.get('coordinatoremail'),
             'name': request.form['companyName'],
             'link': request.form['companyLocation'],
+            'role': request.form['companyRole'],
+            'location': request.form['companyLocation'],
+            'stud_branch': request.form['stud_branch'],
+            'due_date': request.form['dueDate'],
             'description': request.form['companyDescription'],
-            'required_cgpa': request.form['previousYearCGPA'],
         })
 
-        return render_template('coordinatordash.html')
+        resp = make_response(redirect(url_for('coordinatordash')))
+        return resp
 
-    return render_template('coordinatordash.html')
+    if request.method == "DELETE":
+        jobId = request.json['jobId']
 
+        db.delete_job_offer(jobId)
+        resp = make_response('')
+        resp.headers['Location'] = url_for('coordinatordash')
+        resp.status_code = 200
+        return resp
 
-@app.route('/careers', methods=['GET', 'POST'])
-def careers():
-    return render_template('careers.html')
+    job_offers = db.get_offers()
+    return render_template('coordinatordash.html', offers=job_offers, enumerate=enumerate)
 
 
 @app.route('/faq', methods=['GET', 'POST'])
