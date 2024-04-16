@@ -8,7 +8,7 @@
     outline: none;
     box-sizing: border-box;
     font-family: Poppinsa, sans-serif;
-    
+    font-size: 22px;
 }
 
 body {
@@ -157,7 +157,7 @@ body {
     width: 1650px;
     height: 29%;
    /* /margin: 10px;/ */
-   font-size: 22px;
+    font-size: 22px;
     margin-top: 810px;
     margin-left: -1650px;
     background: #fff;
