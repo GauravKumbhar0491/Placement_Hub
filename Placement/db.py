@@ -3,7 +3,12 @@ import mysql.connector
 
 class DB:
     def __init__(self):
-        self.connection = mysql.connector.connect(user='root', host='localhost', database='profile')
+        self.connection = mysql.connector.connect(
+            user='root', 
+            password='Quoltis@0491', 
+            host='192.168.0.100', 
+            database='profile'
+        )
 
     def check_user_password(self, email, password):
         cursor = self.connection.cursor()
