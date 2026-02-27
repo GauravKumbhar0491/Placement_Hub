@@ -1,40 +1,40 @@
-/*  import google fonts */
+/* import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
 * {
     margin: 0;
     padding: 0;
     border: none;
     outline: none;
     box-sizing: border-box;
-    font-family: Poppinsa, sans-serif;
-    
+    font-family: Poppins, sans-serif;
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
-    /*background-image: url("my\ first\ design.jpg");*/
-    background-size: cover;
+    min-height: 100vh;
 }
 
+/* ── Sidebar ── */
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
-    bottom: 0;
     width: 90px;
-    height: 99vh;
+    height: 100vh;
     padding: 0 0.8rem;
     color: #fff;
     overflow: hidden;
-    transition: all 0.5s linear;
-    background-color:rgb(20, 39, 78);
+    transition: width 0.5s linear;
+    background-color: rgb(20, 39, 78);
     box-shadow: 0 20px 20px rgb(42, 42, 42);
+    flex-shrink: 0;
+    z-index: 100;
 }
 
 .sidebar:hover {
     width: 240px;
-    transition: 0.5s;
 }
 
 .logo {
@@ -68,6 +68,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    white-space: nowrap;
 }
 
 .main a span {
@@ -76,18 +77,79 @@ body {
 
 .main a i {
     font-size: 1.6rem;
+    flex-shrink: 0;
 }
 
 .college-logo {
     display: inline-block;
     align-items: center;
 }
-/*-----main-----*/
-.first h1{
+
+/* ── Stat content ── */
+.stat-content {
+    flex: 1;
+    padding: 20px;
+    overflow-x: hidden;
+    min-width: 0;
+}
+
+.first h1 {
     font-family: Helvetica, sans-serif;
-    font-size: 29px;
+    font-size: clamp(18px, 3vw, 29px);
 }
 
 .second {
-    margin-top: 81px;
+    margin-top: 40px;
+}
+
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 0 0.4rem;
+    }
+
+    .sidebar:hover {
+        width: 200px;
+    }
+
+    .main a {
+        font-size: 14px;
+        gap: 1rem;
+    }
+
+    .main a i {
+        font-size: 1.3rem;
+    }
+
+    .stat-content {
+        padding: 14px;
+    }
+
+    .second {
+        margin-top: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 50px;
+        padding: 0 0.3rem;
+    }
+
+    .sidebar:hover {
+        width: 170px;
+    }
+
+    .logo {
+        height: 35px;
+        padding: 8px;
+    }
+
+    .stat-content {
+        padding: 10px 8px;
+    }
 }

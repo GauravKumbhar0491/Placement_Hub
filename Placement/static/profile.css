@@ -5,34 +5,33 @@
     outline: none;
     box-sizing: border-box;
     font-family: Helvetica, sans-serif;
-
 }
 
 body {
     display: flex;
     background: rgb(241, 246, 249);
-    /*background-image: url("my\ first\ design.jpg");*/
-    background-size: cover;
+    min-height: 100vh;
 }
 
+/* ── Sidebar ── */
 .sidebar {
     position: sticky;
     top: 0;
     left: 0;
-    bottom: 0;
     width: 90px;
-    height: 99vh;
+    height: 100vh;
     padding: 0 0.8rem;
     color: #fff;
     overflow: hidden;
-    transition: all 0.5s linear;
-    background-color:rgb(20, 39, 78);
+    transition: width 0.5s linear;
+    background-color: rgb(20, 39, 78);
     box-shadow: 0 20px 20px rgb(42, 42, 42);
+    flex-shrink: 0;
+    z-index: 100;
 }
 
 .sidebar:hover {
     width: 240px;
-    transition: 0.5s;
 }
 
 .logo {
@@ -66,6 +65,7 @@ body {
     display: flex;
     align-items: center;
     gap: 1.5rem;
+    white-space: nowrap;
 }
 
 .main a span {
@@ -74,6 +74,7 @@ body {
 
 .main a i {
     font-size: 1.6rem;
+    flex-shrink: 0;
 }
 
 .college-logo {
@@ -81,34 +82,46 @@ body {
     align-items: center;
 }
 
-
-/*-------first-------*/
-.first{
-    padding: 10px;
-    align-items: center;
+/* ── Profile content ── */
+.profile-content {
+    flex: 1;
+    padding: 20px;
+    overflow-x: hidden;
+    min-width: 0;
 }
 
-.first-half{
+.first {
+    padding: 10px;
+}
+
+.first-half {
     font-family: Helvetica, sans-serif;
     width: 100%;
     font-size: larger;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
 }
 
 .info {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 10px;
     width: 100%;
-    height: 70%;
 }
 
-.box1{
+.box1 {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     margin-top: 10px;
 }
 
 .info .box {
-    width: 290px;
+    flex: 1 1 260px;
+    min-width: 220px;
+    max-width: 100%;
     margin: 10px;
     background: #fff;
     text-align: center;
@@ -117,16 +130,16 @@ body {
     box-shadow: 0 20px 35px rgb(65, 64, 64);
 }
 
-
-.info .box h1{
+.info .box h1 {
     font-family: Helvetica, sans-serif;
     color: rgb(20, 39, 78);
     overflow: hidden;
+    font-size: clamp(18px, 3vw, 28px);
 }
 
 .info .box h1:hover {
     transition: linear 0.5s;
-    font-size: xx-large;
+    font-size: clamp(20px, 3.5vw, 32px);
 }
 
 .info .box h2 {
@@ -134,17 +147,18 @@ body {
     margin: 20px;
     text-transform: capitalize;
     color: rgb(155, 164, 180);
+    font-size: clamp(14px, 2vw, 20px);
 }
 
 input {
-    border-top: #fff;
-    border-left: #fff;
-    border-right: #fff;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     border-bottom: 1px solid rgb(20, 39, 78);
-    font-size: 22px;
+    font-size: clamp(16px, 2.5vw, 22px);
     font-family: Helvetica, sans-serif;
     color: rgb(57, 72, 103);
-
+    width: 100%;
 }
 
 .container {
@@ -157,10 +171,71 @@ input {
 
 .bottom-center {
     position: absolute;
-    font-size: 23px;
+    font-size: clamp(16px, 2vw, 23px);
     color: rgb(20, 39, 78);
     height: 55px;
     width: 125px;
     bottom: 0px;
     box-shadow: 0 20px 35px rgb(65, 64, 64);
+}
+
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════ */
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 60px;
+        padding: 0 0.4rem;
+    }
+
+    .sidebar:hover {
+        width: 200px;
+    }
+
+    .main a {
+        font-size: 14px;
+        gap: 1rem;
+    }
+
+    .main a i {
+        font-size: 1.3rem;
+    }
+
+    .profile-content {
+        padding: 14px;
+    }
+
+    .info .box {
+        margin: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar {
+        width: 50px;
+        padding: 0 0.3rem;
+    }
+
+    .sidebar:hover {
+        width: 170px;
+    }
+
+    .logo {
+        height: 35px;
+        padding: 8px;
+    }
+
+    .profile-content {
+        padding: 10px 8px;
+    }
+
+    .info .box {
+        flex: 1 1 100%;
+        margin: 6px 0;
+    }
+
+    .first-half {
+        font-size: medium;
+    }
 }

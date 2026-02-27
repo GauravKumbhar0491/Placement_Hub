@@ -13,7 +13,7 @@
 
 <body>
 
-    <div class="container" style="margin-top: 200px;">
+    <div class="container">
         <h2>Coordinator Dashboard</h2>
         <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data">
             <div class="form-group">
@@ -44,33 +44,35 @@
                 <input type="submit" value="Add Company">
             </div>
         </form>
-        <table border="1">
-            <thead>
-                <tr>
-                    <th>No.</th>
-                    <th>Company Name</th>
-                    <th>Role</th>
-                    <th>Description</th>
-                    <th>Branch</th>
-                    <th>Due Date</th>
-                </tr>
-            </thead>
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Company Name</th>
+                        <th>Role</th>
+                        <th>Description</th>
+                        <th>Branch</th>
+                        <th>Due Date</th>
+                    </tr>
+                </thead>
 
-            <tbody>
-                {% for index, offer in enumerate(offers): %}
-                <tr>
-                    <th>{{ index + 1 }}</th>
-                    <th>{{ offer['name'].strip() }}</th>
-                    <th>{{ offer['role'].strip() }}</th>
-                    <th>{{ offer['description'].strip() }}</th>
-                    <th>{{ offer['branch'].strip() }}</th>
-                    <th>{{ offer['due_date'].strip() }}</th>
-                </tr>
-                {% endfor %}
+                <tbody>
+                    {% for index, offer in enumerate(offers): %}
+                    <tr>
+                        <td>{{ index + 1 }}</td>
+                        <td>{{ offer['name'].strip() }}</td>
+                        <td>{{ offer['role'].strip() }}</td>
+                        <td>{{ offer['description'].strip() }}</td>
+                        <td>{{ offer['branch'].strip() }}</td>
+                        <td>{{ offer['due_date'].strip() }}</td>
+                    </tr>
+                    {% endfor %}
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+        </div>
 
     </div>
 

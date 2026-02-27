@@ -1,38 +1,41 @@
-/*  import google fonts */
+/* import google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Poppinsa, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
-body{
+body {
     background-image: url("back-img.jpg");
     background-size: cover;
+    background-attachment: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 20px;
 }
 
 h1 {
-    font-family: Poppinsa, sans-serif;
+    font-family: Poppins, sans-serif;
 }
 
-.container{
+/* ── Login/Register container ── */
+.container {
     background-color: rgb(241, 246, 249);
     border-radius: 30px;
     box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
     position: relative;
     overflow: hidden;
-    width: 768px;
-    max-width: 100%;
+    width: min(768px, 100%);
     min-height: 480px;
 }
 
-.container p{
+.container p {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: 0.3px;
@@ -40,12 +43,12 @@ h1 {
     font-family: Helvetica, sans-serif;
 }
 
-.container span{
+.container span {
     font-family: Helvetica, sans-serif;
     font-size: 12px;
 }
 
-.container a{
+.container a {
     color: #333;
     font-family: Helvetica, sans-serif;
     font-size: 13px;
@@ -53,7 +56,7 @@ h1 {
     margin: 15px 0 10px;
 }
 
-.container button{
+.container button {
     background-color: rgb(155, 164, 180);
     color: #fff;
     font-size: 12px;
@@ -65,18 +68,19 @@ h1 {
     text-transform: uppercase;
     margin-top: 10px;
     cursor: pointer;
+    width: auto;
 }
 
-.container button:hover{
+.container button:hover {
     background-color: rgb(57, 72, 103);
 }
 
-.container button.hidden{
+.container button.hidden {
     background-color: transparent;
     border-color: rgb(241, 246, 249);
 }
 
-.container form{
+.container form {
     background-color: rgb(241, 246, 249);
     display: flex;
     align-items: center;
@@ -86,72 +90,76 @@ h1 {
     height: 100%;
 }
 
-.container input{
+.container input {
     font-family: Helvetica, sans-serif;
     background-color: rgb(241, 246, 249);
     border-bottom: 1px solid rgb(57, 72, 103);
+    border-top: none;
+    border-left: none;
+    border-right: none;
     margin: 8px 0;
     padding: 10px 15px;
     font-size: 13px;
     width: 100%;
     outline: none;
-    border-top: none;
-    border-left: none;
-    border-right: none;
 }
 
 .container input:hover {
     transition: all 0.5s linear;
-    font-size: x-large;
+    font-size: larger;
 }
 
-.form-container{
+.form-container {
     position: absolute;
     top: 0;
     height: 100%;
     transition: all 0.6s ease-in-out;
 }
 
-.sign-in{
+.sign-in {
     left: 0;
     width: 50%;
     z-index: 2;
 }
 
-.container.active .sign-in{
+.container.active .sign-in {
     transform: translateX(100%);
 }
 
-.sign-up{
+.sign-up {
     left: 0;
     width: 50%;
     opacity: 0;
     z-index: 1;
 }
 
-.container.active .sign-up{
+.container.active .sign-up {
     transform: translateX(100%);
     opacity: 1;
     z-index: 5;
     animation: move 0.6s;
 }
 
-@keyframes move{
-    0%, 49.99%{
+@keyframes move {
+
+    0%,
+    49.99% {
         opacity: 0;
         z-index: 1;
     }
-    50%, 100%{
+
+    50%,
+    100% {
         opacity: 1;
         z-index: 5;
     }
 }
 
-.social-icons{
+.social-icons {
     margin: 20px 0;
 }
 
-.social-icons a{
+.social-icons a {
     border: 1px solid #ccc;
     border-radius: 20%;
     display: inline-flex;
@@ -162,7 +170,7 @@ h1 {
     height: 40px;
 }
 
-.toggle-container{
+.toggle-container {
     position: absolute;
     top: 0;
     left: 50%;
@@ -174,29 +182,27 @@ h1 {
     z-index: 1000;
 }
 
-.container.active .toggle-container{
+.container.active .toggle-container {
     transform: translateX(-100%);
     border-radius: 0 150px 100px 0;
 }
 
-.toggle{
-    background-color: linear-gradient(to left, #394867, #9BA4B4);
+.toggle {
     height: 100%;
-    background: linear-gradient(to right, #9BA4B4  , #394867);
+    background: linear-gradient(to right, #9BA4B4, #394867);
     color: rgb(241, 246, 249);
     position: relative;
     left: -100%;
-    height: 100%;
     width: 200%;
     transform: translateX(0);
     transition: all 0.6s ease-in-out;
 }
 
-.container.active .toggle{
+.container.active .toggle {
     transform: translateX(50%);
 }
 
-.toggle-panel{
+.toggle-panel {
     position: absolute;
     width: 50%;
     height: 100%;
@@ -211,19 +217,85 @@ h1 {
     transition: all 0.6s ease-in-out;
 }
 
-.toggle-left{
+.toggle-left {
     transform: translateX(-200%);
 }
 
-.container.active .toggle-left{
+.container.active .toggle-left {
     transform: translateX(0);
 }
 
-.toggle-right{
+.toggle-right {
     right: 0;
     transform: translateX(0);
 }
 
-.container.active .toggle-right{
+.container.active .toggle-right {
     transform: translateX(200%);
+}
+
+/* ════════════════════════════════
+   RESPONSIVE BREAKPOINTS
+   ════════════════════════════════ */
+
+/* Tablet — stack the panel below the forms */
+@media (max-width: 600px) {
+    body {
+        padding: 10px;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+
+    .container {
+        width: 100%;
+        min-height: auto;
+        border-radius: 20px;
+        /* Disable the sliding animation on small screens — just show sign-in */
+    }
+
+    .sign-in,
+    .sign-up {
+        width: 100%;
+        position: relative;
+    }
+
+    /* Hide the toggle panel on very small screens */
+    .toggle-container {
+        display: none;
+    }
+
+    /* Show both forms stacked (sign-up hidden by default) */
+    .sign-up {
+        display: none;
+    }
+
+    .container.active .sign-up {
+        display: flex;
+        transform: none;
+        opacity: 1;
+    }
+
+    .container.active .sign-in {
+        display: none;
+        transform: none;
+    }
+
+    .container form {
+        padding: 20px 20px 30px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        border-radius: 14px;
+    }
+
+    .container form {
+        padding: 16px 14px 24px;
+    }
+
+    .container button {
+        padding: 10px 30px;
+        font-size: 11px;
+    }
 }
