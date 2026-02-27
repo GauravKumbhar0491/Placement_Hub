@@ -153,7 +153,7 @@ class DB:
 
     def delete_job_offer(self, jobId):
         with self.connection.cursor() as cursor:
-            cursor.execute("delete from coordinator where id='{jobId}'".format(jobId=jobId))
+            cursor.execute("DELETE FROM coordinator WHERE id=%s", (jobId,))
 
         self.connection.commit()
 
