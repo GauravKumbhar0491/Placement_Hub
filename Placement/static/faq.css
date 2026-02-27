@@ -1,214 +1,353 @@
-/* import google fonts */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+/* FAQ Page */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap");
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
-    border: none;
-    outline: none;
     box-sizing: border-box;
-    font-family: Poppins, sans-serif;
+}
+
+:root {
+    --navy: #0d1b3e;
+    --blue: #2563eb;
+    --blue-light: #3b82f6;
+    --accent: #7c3aed;
+    --accent2: #06b6d4;
+    --white: #ffffff;
+    --muted: rgba(255, 255, 255, 0.5);
+    --surface: rgba(255, 255, 255, 0.05);
+    --border: rgba(255, 255, 255, 0.09);
+    --sidebar-w: 240px;
+    --topbar-h: 72px;
+}
+
+html,
+body {
+    height: 100%;
+    font-family: 'Inter', sans-serif;
 }
 
 body {
-    display: flex;
-    background: rgb(241, 246, 249);
+    background: linear-gradient(135deg, #0d1b3e 0%, #0f2252 100%);
+    color: var(--white);
     min-height: 100vh;
+    display: flex;
+    overflow-x: hidden;
 }
 
-/* ── Sidebar ── */
 .sidebar {
-    position: sticky;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 90px;
-    height: 100vh;
-    padding: 0 0.8rem;
-    color: #fff;
-    overflow: hidden;
-    transition: width 0.5s linear;
-    background-color: rgb(20, 39, 78);
-    box-shadow: 0 20px 20px rgb(42, 42, 42);
-    flex-shrink: 0;
-    z-index: 100;
+    bottom: 0;
+    width: var(--sidebar-w);
+    background: rgba(10, 22, 50, 0.97);
+    border-right: 1px solid var(--border);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    z-index: 200;
+    transition: transform 0.35s ease;
 }
 
-.sidebar:hover {
-    width: 240px;
-}
-
-.logo {
-    height: 50px;
-    padding: 12px;
-}
-
-.main {
-    height: 88%;
-    position: relative;
-    list-style: none;
-    padding: 0;
-}
-
-.main li {
-    padding: 1rem;
-    margin: 8px 0;
-    border-radius: 8px;
-    transition: all 0.5s ease-in-out;
-}
-
-.main li:hover {
-    background: #e0e0e058;
-}
-
-.main a {
-    color: #fff;
-    font-family: Helvetica, sans-serif;
-    font-size: 17px;
-    text-decoration: none;
+.sidebar-brand {
     display: flex;
     align-items: center;
-    gap: 1.5rem;
+    gap: 12px;
+    padding: 0 22px;
+    height: var(--topbar-h);
+    border-bottom: 1px solid var(--border);
+    flex-shrink: 0;
+}
+
+.sidebar-icon-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    font-size: 16px;
+    color: var(--blue-light);
+    background: rgba(59, 130, 246, 0.15);
+    border: 1px solid rgba(59, 130, 246, 0.25);
+    flex-shrink: 0;
+}
+
+.sidebar-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
     white-space: nowrap;
 }
 
-.main a span {
-    overflow: hidden;
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 20px 12px;
+    flex: 1;
 }
 
-.main a i {
-    font-size: 1.6rem;
+.sidebar-footer {
+    padding: 12px;
+    border-top: 1px solid var(--border);
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    padding: 11px 14px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.55);
+    text-decoration: none;
+    transition: all 0.22s;
+}
+
+.nav-item:hover {
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.07);
+}
+
+.nav-item.active {
+    color: var(--white);
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.28), rgba(124, 58, 237, 0.16));
+    border: 1px solid rgba(59, 130, 246, 0.22);
+}
+
+.nav-item i {
+    font-size: 16px;
     flex-shrink: 0;
 }
 
-.college-logo {
-    display: inline-block;
-    align-items: center;
+.nav-item-danger:hover {
+    color: #fca5a5;
+    background: rgba(239, 68, 68, 0.1);
 }
 
-/* ── Main content ── */
-.main-content {
-    font-family: verdana, geneva, sans-serif;
-    font-size: 20px;
+.main-area {
+    margin-left: var(--sidebar-w);
     flex: 1;
-    padding: 20px;
-    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
     min-width: 0;
 }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    width: 100%;
+.top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--topbar-h);
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 0 32px;
+    background: rgba(10, 22, 50, 0.92);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    flex-shrink: 0;
 }
 
-h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: clamp(24px, 5vw, 45px);
-    margin-top: 0;
+.hamburger-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
 }
 
-/* ── FAQ / Accordion ── */
-.que {
-    width: 100%;
-    height: 100%;
-    background: transparent;
-    backdrop-filter: blur(100px);
+.top-bar-info {
+    flex: 1;
 }
 
-.para {
-    text-align: center;
-    width: min(60%, 400px);
-    margin: 60px auto 0;
-    font-size: clamp(16px, 2.5vw, 24px);
-    font-family: Helvetica, sans-serif;
+.top-bar-info h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+.top-bar-info p {
+    font-size: 13px;
+    color: var(--muted);
+}
+
+.avatar-chip {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 8px 14px 8px 9px;
+    border-radius: 100px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+}
+
+.avatar-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    font-size: 14px;
+    color: var(--white);
+    background: linear-gradient(135deg, var(--blue), var(--accent));
+}
+
+.avatar-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.welcome-banner {
+    margin: 22px 32px 0;
+    padding: 22px 28px;
+    border-radius: 18px;
+    background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(124, 58, 237, 0.15));
+    border: 1px solid rgba(59, 130, 246, 0.18);
+}
+
+.welcome-text h2 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.welcome-text p {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Accordion */
+.faq-section {
+    padding: 22px 32px 40px;
 }
 
 .accordion {
-    border-top: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 860px;
 }
 
 .accordion-item {
-    border-bottom: 1px solid #ddd;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.25s;
 }
 
-.accordion-title {
+.accordion-item.open {
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+.accordion-trigger {
+    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 10px;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 18px 20px;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    user-select: none;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    color: var(--white);
+    transition: background 0.2s;
 }
 
-.accordion-content {
-    padding: 10px;
-    display: none;
+.accordion-trigger:hover {
+    background: rgba(255, 255, 255, 0.04);
 }
 
-.accordion-item.active .accordion-content {
-    display: block;
+.accordion-item.open .accordion-trigger {
+    color: var(--blue-light);
 }
 
-.icon {
-    font-size: 1.5rem;
+.acc-icon {
+    font-size: 13px;
+    color: var(--muted);
+    flex-shrink: 0;
+    transition: transform 0.3s ease, color 0.25s;
 }
 
-/* ════════════════════════════════
-   RESPONSIVE BREAKPOINTS
-   ════════════════════════════════ */
+.accordion-item.open .acc-icon {
+    transform: rotate(180deg);
+    color: var(--blue-light);
+}
 
-@media (max-width: 768px) {
+.accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    padding: 0 20px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.65);
+    line-height: 1.7;
+}
+
+.accordion-item.open .accordion-body {
+    max-height: 300px;
+    padding: 0 20px 18px;
+}
+
+@media (max-width: 900px) {
     .sidebar {
-        width: 60px;
-        padding: 0 0.4rem;
+        transform: translateX(-100%);
     }
 
-    .sidebar:hover {
-        width: 200px;
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 8px 0 40px rgba(0, 0, 0, 0.45);
     }
 
-    .main a {
-        font-size: 14px;
-        gap: 1rem;
+    .main-area {
+        margin-left: 0;
     }
 
-    .main a i {
-        font-size: 1.3rem;
+    .hamburger-btn {
+        display: flex;
     }
 
-    .main-content {
-        padding: 14px;
-        font-size: 16px;
+    .faq-section,
+    .welcome-banner {
+        margin-left: 20px;
+        margin-right: 20px;
+        padding-left: 0;
+        padding-right: 0;
     }
 
-    .para {
-        width: 90%;
-        margin-top: 30px;
+    .top-bar {
+        padding: 0 20px;
     }
 }
 
-@media (max-width: 480px) {
-    .sidebar {
-        width: 50px;
-        padding: 0 0.3rem;
+@media (max-width: 640px) {
+    .faq-section {
+        padding: 14px 14px 30px;
     }
 
-    .sidebar:hover {
-        width: 170px;
+    .welcome-banner {
+        margin: 14px 14px 0;
     }
 
-    .logo {
-        height: 35px;
-        padding: 8px;
-    }
-
-    .main-content {
-        padding: 10px 8px;
+    .accordion-trigger {
         font-size: 14px;
-    }
-
-    .accordion-title {
-        font-size: 14px;
-        padding: 8px;
+        padding: 15px 16px;
     }
 }

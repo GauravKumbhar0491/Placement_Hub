@@ -1,96 +1,176 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Student Dashboard — Placement Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="/static/dashboard.css" />
-  <!-- Font Awesome Cdn Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  
 </head>
+
 <body>
-    <div class="sidebar">
-        <div class="logo"></div>
-        <ul class="main">
-            <li class="active">
-                <a href="/dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/profile">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="/stat">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Statistics</span>
-                </a>
-            </li>
-            <li>
-                <a href="/faq">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </li>
-            <li>
-                <a href="/test">
-                    <i class="fas fa-star"></i>
-                    <span>Testimonial</span>
-                </a>
-            </li>
-            <li>
-                <a href="/api/logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Log out</span>
-                </a>
-            </li>
-        </ul>
-        </div>
-    </div>
 
-    <section class="main">
-        <div class="main-loop">
-            <h1>Dashboard</h1>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-icon-wrap"><i class="fas fa-briefcase"></i></div>
+            <span class="sidebar-title">Placement Hub</span>
         </div>
-    
-    <!-- Table -->
 
-    <section class="company-names">
-        <div class="company-names-list">
-            <h1>List of Companies</h1>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Company Name</th>
-                        <th>Role</th>
-                        <th>Description</th>
-                        <th>Branch</th>
-                        <th>Due Date</th>
-                        <th>Apply</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for index, offer in enumerate(offers): %}
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/profile" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+            <a href="/stat" class="nav-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Statistics</span>
+            </a>
+            <a href="/faq" class="nav-item">
+                <i class="fas fa-question-circle"></i>
+                <span>FAQ</span>
+            </a>
+            <a href="/testimonials" class="nav-item">
+                <i class="fas fa-star"></i>
+                <span>Testimonials</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <a href="/api/logout" class="nav-item nav-item-danger">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Log Out</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- ── Main area ── -->
+    <div class="main-area">
+
+        <!-- Top bar -->
+        <header class="top-bar">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="top-bar-info">
+                <h1>Dashboard</h1>
+                <p>Browse and apply to the latest job opportunities</p>
+            </div>
+            <div class="top-bar-right">
+                <div class="avatar-chip">
+                    <div class="avatar-icon"><i class="fas fa-user-graduate"></i></div>
+                    <span class="avatar-label">Student</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats strip -->
+        <div class="stats-strip">
+            <div class="stat-chip">
+                <i class="fas fa-building"></i>
+                <span><strong>{{ offers | length }}</strong> Open Listings</span>
+            </div>
+            <div class="stat-chip">
+                <i class="fas fa-fire"></i>
+                <span>New opportunities added regularly</span>
+            </div>
+        </div>
+
+        <!-- Welcome banner -->
+        <div class="welcome-banner">
+            <div class="welcome-text">
+                <h2>👋 Welcome back!</h2>
+                <p>Check out the latest job openings below. Apply before the due date!</p>
+            </div>
+            <div class="welcome-art">
+                <i class="fas fa-rocket"></i>
+            </div>
+        </div>
+
+        <!-- Company listings table -->
+        <section class="section-card">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <div class="section-icon"><i class="fas fa-list"></i></div>
+                    <div>
+                        <h2>Available Job Listings</h2>
+                        <p>{{ offers | length }} active offer{% if offers|length != 1 %}s{% endif %} — apply before your
+                            branch deadline</p>
+                    </div>
+                </div>
+                <div class="section-count-badge">{{ offers | length }}</div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="offers-table">
+                    <thead>
                         <tr>
-                            <th> {{ index+1 }} </th>
-                            <th> {{ offer['name'] }} </th>
-                            <th> {{ offer['role'] }}</th>
-                            <th> {{ offer['description'] }} </th>
-                            <th> {{ offer['branch'] }} </th>
-                            <th> {{ offer['due_date'] }} </th>
-                            <th><a href="{{ offer['link'] }}"><button type="button">Apply</button></a></th>
+                            <th>#</th>
+                            <th><i class="fas fa-building"></i> Company</th>
+                            <th><i class="fas fa-briefcase"></i> Role</th>
+                            <th><i class="fas fa-align-left"></i> Description</th>
+                            <th><i class="fas fa-graduation-cap"></i> Branch</th>
+                            <th><i class="fas fa-calendar-alt"></i> Due Date</th>
+                            <th>Apply</th>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    </section>
+                    </thead>
+                    <tbody>
+                        {% for index, offer in enumerate(offers): %}
+                        <tr class="offer-row">
+                            <td><span class="row-num">{{ index + 1 }}</span></td>
+                            <td>
+                                <div class="company-cell">
+                                    <div class="company-avatar">{{ offer['name'][0] | upper }}</div>
+                                    <span class="company-name">{{ offer['name'] }}</span>
+                                </div>
+                            </td>
+                            <td><span class="role-badge">{{ offer['role'] }}</span></td>
+                            <td class="desc-cell">{{ offer['description'] }}</td>
+                            <td><span class="branch-badge">{{ offer['branch'] }}</span></td>
+                            <td><span class="due-date"><i class="fas fa-clock"></i> {{ offer['due_date'] }}</span></td>
+                            <td>
+                                <a href="{{ offer['link'] }}" target="_blank" class="apply-btn">
+                                    Apply <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not offers %}
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <span>No job listings available right now. Check back soon!</span>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
+    </div><!-- /main-area -->
+
+    <script>
+        // Sidebar toggle
+        document.getElementById('hamburgerBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Animate rows in on load
+        document.querySelectorAll('.offer-row').forEach((row, i) => {
+            row.style.animationDelay = `${i * 60}ms`;
+        });
+    </script>
 </body>
+
 </html>

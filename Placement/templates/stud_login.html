@@ -4,59 +4,196 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <title>Student Login — Placement Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="/static/stud_login.css">
-    <title>Student Login Page</title>
 </head>
 
 <body>
+
+    <!-- Back button -->
+    <a href="/" class="back-btn">
+        <i class="fas fa-arrow-left"></i> Back to Home
+    </a>
+
+    <!-- Animated background blobs -->
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+
+    <!-- Success toast -->
     {% if signup %}
-      <script type="text/javascript">
-        alert("Sign up successful")
-      </script>
+    <div class="toast toast-success" id="successToast">
+        <i class="fas fa-check-circle"></i>
+        <span>Account created successfully! Please sign in.</span>
+        <button onclick="this.parentElement.remove()" class="toast-close"><i class="fas fa-times"></i></button>
+    </div>
     {% endif %}
-    
-    <div class="container" id="container">
-        <div class="form-container sign-up">
-            <form action="/register" method="post" enctype="multipart/form-data">
-                <h1 style="margin-bottom: 30px;">Create Account</h1>
-                <input type="text" name="name" id="name" placeholder="Name" required>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-                <input type="password" name="password" id="password"  placeholder="Password" required>
-                <button type="submit">Sign Up</button>
-                {% if signup_error %}
-                <p style="color: red">{{ signup_error }}</p>
-                {% endif %}
-            </form>
-        </div>
-        <div class="form-container sign-in">
-            <form action="/stud_login" method="post" enctype="multipart/form-data">
-                <h1 style="margin-bottom: 30px;">Sign In</h1>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-                <input type="password" name="pass" id="pass" placeholder="Password" required>
-                <button type="submit">Sign In</button>
+
+    <!-- Main card -->
+    <div class="auth-wrapper" id="authWrapper">
+
+        <!-- ── SIGN IN PANEL ── -->
+        <div class="panel panel-signin" id="signinPanel">
+            <div class="panel-inner">
+                <div class="panel-logo">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Placement Hub</span>
+                </div>
+
+                <div class="panel-header">
+                    <div class="panel-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h2>Welcome back</h2>
+                    <p>Sign in to access your placement dashboard</p>
+                </div>
+
                 {% if login_error %}
-                <p style="color: red">{{ login_error }}</p>
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {{ login_error }}
+                </div>
                 {% endif %}
-            </form>
-        </div>
-        <div class="toggle-container">
-            <div class="toggle">
-                <div class="toggle-panel toggle-left">
-                    <h1>Welcome Back !</h1>
-                    <p>Enter your personal details to use all of site features</p>
-                    <button class="hidden" id="login">Sign In</button>
-                </div>
-                <div class="toggle-panel toggle-right">
-                    <h1>Welcome, Student!</h1>
-                    <p>Enter your personal details</p>
-                    <button class="hidden" id="register">Sign Up</button>
-                </div>
+
+                <form action="/stud_login" method="post" class="auth-form">
+                    <div class="field-group">
+                        <label>Email Address</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-envelope field-icon"></i>
+                            <input type="email" name="email" placeholder="student@college.edu" required
+                                autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Password</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-lock field-icon"></i>
+                            <input type="password" name="pass" id="signInPass" placeholder="Enter your password"
+                                required autocomplete="current-password">
+                            <button type="button" class="eye-btn" onclick="togglePass('signInPass', this)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        Sign In <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="switch-text">
+                    Don't have an account?
+                    <button class="switch-btn" id="goToSignup">Create one →</button>
+                </p>
             </div>
         </div>
+
+        <!-- ── DIVIDER ── -->
+        <div class="divider" id="divider">
+            <div class="divider-line"></div>
+            <div class="divider-circle">OR</div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- ── SIGN UP PANEL ── -->
+        <div class="panel panel-signup" id="signupPanel">
+            <div class="panel-inner">
+                <div class="panel-logo">
+                    <i class="fas fa-briefcase"></i>
+                    <span>Placement Hub</span>
+                </div>
+
+                <div class="panel-header">
+                    <div class="panel-icon panel-icon-accent">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h2>Create account</h2>
+                    <p>Join thousands of students finding their dream jobs</p>
+                </div>
+
+                {% if signup_error %}
+                <div class="alert alert-error">
+                    <i class="fas fa-exclamation-circle"></i>
+                    {{ signup_error }}
+                </div>
+                {% endif %}
+
+                <form action="/register" method="post" class="auth-form">
+                    <div class="field-group">
+                        <label>Full Name</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-user field-icon"></i>
+                            <input type="text" name="name" placeholder="Your full name" required autocomplete="name">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Email Address</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-envelope field-icon"></i>
+                            <input type="email" name="email" placeholder="student@college.edu" required
+                                autocomplete="email">
+                        </div>
+                    </div>
+                    <div class="field-group">
+                        <label>Password</label>
+                        <div class="input-wrap">
+                            <i class="fas fa-lock field-icon"></i>
+                            <input type="password" name="password" id="signUpPass" placeholder="Create a password"
+                                required autocomplete="new-password">
+                            <button type="button" class="eye-btn" onclick="togglePass('signUpPass', this)">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <button type="submit" class="submit-btn submit-btn-accent">
+                        Create Account <i class="fas fa-arrow-right"></i>
+                    </button>
+                </form>
+
+                <p class="switch-text">
+                    Already have an account?
+                    <button class="switch-btn" id="goToSignin">Sign in →</button>
+                </p>
+            </div>
+        </div>
+
     </div>
 
     <script src="/static/stud_login.js"></script>
+    <script>
+        // Password toggle
+        function togglePass(inputId, btn) {
+            const input = document.getElementById(inputId);
+            const icon = btn.querySelector('i');
+            const isHidden = input.type === 'password';
+            input.type = isHidden ? 'text' : 'password';
+            icon.className = isHidden ? 'fas fa-eye-slash' : 'fas fa-eye';
+        }
+
+        // Panel switching (mobile)
+        const wrapper = document.getElementById('authWrapper');
+        document.getElementById('goToSignup').addEventListener('click', () => {
+            wrapper.classList.add('show-signup');
+        });
+        document.getElementById('goToSignin').addEventListener('click', () => {
+            wrapper.classList.remove('show-signup');
+        });
+
+        // Auto-dismiss success toast
+        const toast = document.getElementById('successToast');
+        if (toast) setTimeout(() => toast.style.opacity = '0', 4000);
+
+        // Input focus glow
+        document.querySelectorAll('.input-wrap input').forEach(input => {
+            input.addEventListener('focus', () => input.closest('.input-wrap').classList.add('focused'));
+            input.addEventListener('blur', () => input.closest('.input-wrap').classList.remove('focused'));
+        });
+    </script>
 </body>
 
 </html>

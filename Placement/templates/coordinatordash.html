@@ -4,79 +4,226 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coordinator Dashboard</title>
+    <title>Coordinator Dashboard — Placement Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="/static/coordinatordash.css">
-    <!-- <link rel="stylesheet" href="/static/style.css" /> -->
-    <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 </head>
 
 <body>
 
-    <div class="container">
-        <h2>Coordinator Dashboard</h2>
-        <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="companyName">Company Name :</label>
-                <input type="text" id="companyName" name="companyName" required>
-            </div>
-            <div class="form-group">
-                <label for="companyDescription">Description :</label>
-                <input type="text" id="companyDescription" name="companyDescription" required>
-            </div>
-            <div class="form-group">
-                <label for="companyRole">Role:</label>
-                <input type="text" id="companyRole" name="companyRole" required>
-            </div>
-            <div class="form-group">
-                <label for="registrationLink">Registration Link :</label>
-                <input type="link" id="registrationLink" name="registrationLink" required>
-            </div>
-            <div class="form-group">
-                <label for="stud_branch">Branch :</label>
-                <input type="text" id="stud_branch" name="stud_branch" required>
-            </div>
-            <div class="form-group">
-                <label for="dueDate">Due Date :</label>
-                <input type="text" id="dueDate" name="dueDate" required>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Add Company">
-            </div>
-        </form>
-        <div class="table-wrapper">
-            <table>
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Company Name</th>
-                        <th>Role</th>
-                        <th>Description</th>
-                        <th>Branch</th>
-                        <th>Due Date</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    {% for index, offer in enumerate(offers): %}
-                    <tr>
-                        <td>{{ index + 1 }}</td>
-                        <td>{{ offer['name'].strip() }}</td>
-                        <td>{{ offer['role'].strip() }}</td>
-                        <td>{{ offer['description'].strip() }}</td>
-                        <td>{{ offer['branch'].strip() }}</td>
-                        <td>{{ offer['due_date'].strip() }}</td>
-                    </tr>
-                    {% endfor %}
-
-                </tbody>
-
-            </table>
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-icon"><i class="fas fa-briefcase"></i></div>
+            <span class="sidebar-title">Placement Hub</span>
         </div>
 
-    </div>
+        <nav class="sidebar-nav">
+            <a href="/coordinatordash" class="nav-item active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="/coordinator" class="nav-item nav-item-danger">
+                <i class="fas fa-sign-out-alt"></i>
+                <span>Log Out</span>
+            </a>
+        </nav>
+    </aside>
+
+    <!-- ── Main area ── -->
+    <div class="main-area">
+
+        <!-- Top header bar -->
+        <header class="top-bar">
+            <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle sidebar">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="top-bar-title">
+                <h1>Coordinator Dashboard</h1>
+                <p>Manage job listings and company offers</p>
+            </div>
+            <div class="top-bar-actions">
+                <div class="admin-avatar">
+                    <i class="fas fa-user-cog"></i>
+                </div>
+            </div>
+        </header>
+
+        <!-- Stats row -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-blue"><i class="fas fa-building"></i></div>
+                <div class="stat-info">
+                    <span class="stat-num">{{ offers | length }}</span>
+                    <span class="stat-label">Active Listings</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-purple"><i class="fas fa-users"></i></div>
+                <div class="stat-info">
+                    <span class="stat-num">—</span>
+                    <span class="stat-label">Applications</span>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon stat-icon-cyan"><i class="fas fa-calendar-alt"></i></div>
+                <div class="stat-info">
+                    <span class="stat-num">—</span>
+                    <span class="stat-label">Due This Week</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Add Company Form -->
+        <section class="section-card">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <div class="section-icon"><i class="fas fa-plus"></i></div>
+                    <div>
+                        <h2>Add New Job Listing</h2>
+                        <p>Fill the details to post a new opportunity</p>
+                    </div>
+                </div>
+            </div>
+
+            <form id="companyForm" action="/coordinatordash" method="post" enctype="multipart/form-data"
+                class="company-form">
+                <div class="form-grid">
+                    <div class="field-group">
+                        <label for="companyName"><i class="fas fa-building"></i> Company Name</label>
+                        <input type="text" id="companyName" name="companyName" placeholder="e.g. Google, TCS, Infosys"
+                            required>
+                    </div>
+                    <div class="field-group">
+                        <label for="companyRole"><i class="fas fa-briefcase"></i> Role</label>
+                        <input type="text" id="companyRole" name="companyRole" placeholder="e.g. Software Engineer"
+                            required>
+                    </div>
+                    <div class="field-group">
+                        <label for="stud_branch"><i class="fas fa-graduation-cap"></i> Branch</label>
+                        <input type="text" id="stud_branch" name="stud_branch" placeholder="e.g. CSE, IT, All" required>
+                    </div>
+                    <div class="field-group">
+                        <label for="dueDate"><i class="fas fa-calendar"></i> Due Date</label>
+                        <input type="text" id="dueDate" name="dueDate" placeholder="e.g. 15 March 2025" required>
+                    </div>
+                    <div class="field-group field-group-full">
+                        <label for="companyDescription"><i class="fas fa-align-left"></i> Description</label>
+                        <input type="text" id="companyDescription" name="companyDescription"
+                            placeholder="Brief description of the role and company" required>
+                    </div>
+                    <div class="field-group field-group-full">
+                        <label for="registrationLink"><i class="fas fa-link"></i> Registration Link</label>
+                        <input type="url" id="registrationLink" name="registrationLink"
+                            placeholder="https://apply.company.com/form" required>
+                    </div>
+                </div>
+                <div class="form-footer">
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-plus-circle"></i> Add Company
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Listings Table -->
+        <section class="section-card">
+            <div class="section-header">
+                <div class="section-header-left">
+                    <div class="section-icon section-icon-purple"><i class="fas fa-list"></i></div>
+                    <div>
+                        <h2>Job Listings</h2>
+                        <p>{{ offers | length }} active offer{% if offers | length != 1 %}s{% endif %} posted</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="table-wrapper">
+                <table class="offers-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th><i class="fas fa-building"></i> Company</th>
+                            <th><i class="fas fa-briefcase"></i> Role</th>
+                            <th><i class="fas fa-align-left"></i> Description</th>
+                            <th><i class="fas fa-graduation-cap"></i> Branch</th>
+                            <th><i class="fas fa-calendar"></i> Due Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for index, offer in enumerate(offers): %}
+                        <tr class="offer-row">
+                            <td><span class="row-num">{{ index + 1 }}</span></td>
+                            <td><span class="company-name">{{ offer['name'].strip() }}</span></td>
+                            <td><span class="role-badge">{{ offer['role'].strip() }}</span></td>
+                            <td class="desc-cell">{{ offer['description'].strip() }}</td>
+                            <td><span class="branch-badge">{{ offer['branch'].strip() }}</span></td>
+                            <td><span class="due-date">{{ offer['due_date'].strip() }}</span></td>
+                            <td>
+                                <button class="delete-btn" onclick="deleteOffer({{ offer['id'] }}, this)"
+                                    title="Delete">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                        {% if not offers %}
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                <i class="fas fa-inbox"></i>
+                                <span>No companies added yet. Add your first one above!</span>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div><!-- /main-area -->
 
     <script src="/static/coordinatordash.js"></script>
+    <script>
+        // Sidebar toggle (mobile)
+        document.getElementById('hamburgerBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+
+        // Delete with row fade
+        function deleteOffer(jobId, btn) {
+            if (!confirm('Delete this job listing?')) return;
+            const row = btn.closest('tr');
+            row.style.transition = 'opacity 0.4s, transform 0.4s';
+            row.style.opacity = '0';
+            row.style.transform = 'translateX(20px)';
+            fetch('/coordinatordash', {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ jobId })
+            }).then(res => {
+                if (res.ok) {
+                    setTimeout(() => row.remove(), 400);
+                } else {
+                    row.style.opacity = '1';
+                    row.style.transform = 'none';
+                    alert('Failed to delete. Try again.');
+                }
+            });
+        }
+
+        // Input focus styles
+        document.querySelectorAll('.company-form input').forEach(input => {
+            input.addEventListener('focus', () => input.classList.add('focused'));
+            input.addEventListener('blur', () => input.classList.remove('focused'));
+        });
+    </script>
+
 </body>
 
 </html>

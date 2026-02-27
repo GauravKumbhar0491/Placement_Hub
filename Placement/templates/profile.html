@@ -1,249 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Info</title>
+    <title>Profile — Placement Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="/static/profile.css" />
-    <!-- Font Awesome Cdn Link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-    <!-- <link href="/static/fontawesomefree/css/all.min.css" rel="stylesheet" type="text/css"> -->
-    <link rel="stylesheet" href="/static/all.min.css"/>
-
-
 </head>
+
 <body>
-    <div class="sidebar">
-        <div class="logo"></div>
-        <ul class="main">
-            <li class="active">
-                <a href="/dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/profile">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="/stat">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Statistics</span>
-                </a>
-            </li>
-            <li>
-                <a href="/careers">
-                    <i class="fas fa-briefcase"></i>
-                    <span>Careers</span>
-                </a>
-            </li>
-            <li>
-                <a href="/faq">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </li>
-            <li>
-                <a href="/testimonials">
-                    <i class="fas fa-star"></i>
-                    <span>Testimonials</span>
-                </a>
-            </li>
-            <li>
-                <a href="/api/logout">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Log out</span>
-                </a>
-            </li>
-        </ul>
-        </div>
-    </div>
 
-{% if data %}
-    <script type="text/javascript">
-        alert("Profile Completed")
-    </script>
-    <section class="first">
-        <div class="first-half">
-            <h1>Profile</h1>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-icon-wrap"><i class="fas fa-briefcase"></i></div>
+            <span class="sidebar-title">Placement Hub</span>
         </div>
-        <div class="info">
-            <div class="box">
-                <h1>Personal Info</h1>
-                <hr>
-                <h2>Full Name</h2>
-                <p>{{ data['Fullname'] }}</p>
-                <h2>Date of Birth</h2>
-                <p>{{ data['DOB'] }}</p>
-                <h2>Gender</h2>
-                <p>{{ data['gender'] }}</p>
-                <h2>Email</h2>
-                <p>{{ data['email'] }}</p>
-                <h2>Contact No.</h2>
-                <p>{{ data['phno'] }}</p>
-            </div>
-            <div class="box">
-                <h1>Documents</h1>
-                <hr>
-                <h2>10th Marksheet</h2>
-                <p><p> {{ data['10ms'] }} </p></p>
-                <h2>12th Marksheet</h2>
-                <p><p> {{ data['12ms'] }} </p></p>
-                <h2>Adhar No.</h2>
-                <p>{{ data['aadhar'] }}</p>
-                <p style="margin-top: 10px;">Enter 12 digit aadhar number</p>
-                </div>
-            <div class="box">
-                <h1>About You...</h1>
-                <hr>
-                <i class="fab fa-github -lg" style="margin-top: 15px;"></i>
-                <a href="{{ data['github'] }}">{{ data['github'] }}</a>
-                <br>
-                <i class="fab fa-linkedin -lg" style="margin-top: 5px;"></i>
-                <a href="{{ data['linkedin'] }}">{{ data['linkedin'] }}</a>
-                <h2>Portfolic Web</h2>
-                <p>{{ data['pweb'] }}</p>
-                <h2>Skills</h2>
-                <p> {{ data['skills'] }} </p>
-                <h2>Achivements</h2>
-                <p> {{ data['achievements'] }} </p>
-                <h2>Extra Achivements</h2>
-                <p> {{ data['extraachievements'] }} </p>
-            </div>
-            <div class="box">
-                <h1>Marksheets(cgpa)</h1>
-                <hr>
-                <h2>First Year</h2>
-                <p> {{ data['fe'] }} </p>
-                <h2>Second Year</h2>
-                <p> {{ data['se'] }} </p>
-                <h2>Third Year</h2>
-                <p> {{ data['te'] }} </p>
-                <h2>Fourth Year</h2>
-                <p> {{ data['be'] }} </p>
-            </div>
-            <div class="box">
-                <h1>Other</h1>
-                <hr>
-                <h2>PRN</h2>
-                <p> {{ data['prn'] }} </p>
-                <h2>ERP</h2>
-                <p> {{ data['erp'] }} </p>
-                <h2>ABCid</h2>
-                <p> {{ data['abc'] }} </p>
-                <h2>When can you join?</h2>
-                <p> {{ data['join'] }} </p>
-            </div>
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            <a href="/profile" class="nav-item active"><i class="fas fa-user"></i><span>Profile</span></a>
+            <a href="/stat" class="nav-item"><i class="fas fa-chart-bar"></i><span>Statistics</span></a>
+            <a href="/faq" class="nav-item"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+            <a href="/testimonials" class="nav-item"><i class="fas fa-star"></i><span>Testimonials</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/api/logout" class="nav-item nav-item-danger"><i class="fas fa-sign-out-alt"></i><span>Log
+                    Out</span></a>
         </div>
-    </section>
+    </aside>
 
-{% else %}
-    <section class="first">
-        <div class="first-half">
-            <h1>Profile</h1>
-        </div>
-        <form method="post" action="/profile" enctype="multipart/form-data">
-        <div class="info">
-            <div class="box">
-                <h1>Personal Info</h1>
-                <hr>
-                <h2>Full Name</h2>
-                <input type="text" name="Fullname"
-                class="input" value="" required>
-                <h2>Date of Birth</h2>
-                <input type="text" name="DOB"
-                class="input" value="" required>
-                <h2>Gender</h2>
-                <input type="radio" name="gender"
-                class="input" required>Male
-                <input type="radio" name="gender"
-                class="input" required>Female
-                <h2>Email</h2>
-                <input type="email" name="email"
-                class="input" value="" required>
-                <h2>Contact No.</h2>
-                <input type="text" name="phno" pattern="\d{10}"
-                class="input" value="" required style="margin-bottom: 10px;">
+    <!-- Main -->
+    <div class="main-area">
+        <header class="top-bar">
+            <button class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+            <div class="top-bar-info">
+                <h1>My Profile</h1>
+                <p>{% if data %}Your information is saved{% else %}Complete your profile to get started{% endif %}</p>
             </div>
-            <div class="box">
-                <h1>Documents</h1>
-                <hr>
-                <h2>10th Marksheet</h2>
-                <input type="file" name="10ms"
-                class="input" value="" required>
-                <h2>12th Marksheet</h2>
-                <input type="file" name="12ms"
-                class="input" value="" required>
-                <h2>Adhar No.</h2>
-                <input type="number" name="aadhar" pattern="\d{12}"
-                class="input" value="" required>
-                <p style="margin-top: 10px;">Enter 12 digit aadhar number</p>
+            <div class="avatar-chip">
+                <div class="avatar-icon"><i class="fas fa-user-graduate"></i></div>
+                <span class="avatar-label">Student</span>
+            </div>
+        </header>
+
+        <!-- ── Profile COMPLETE (data exists) ── -->
+        {% if data %}
+        <div class="toast toast-success" id="profileToast">
+            <i class="fas fa-check-circle"></i> Profile completed successfully!
+            <button onclick="this.parentElement.remove()" class="toast-close"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="profile-grid">
+
+            <div class="info-card">
+                <div class="card-header-row">
+                    <div class="card-icon card-icon-blue"><i class="fas fa-user"></i></div>
+                    <h3>Personal Info</h3>
                 </div>
-            <div class="box">
-                <h1>About You...</h1>
-                <hr>
-                <i class="fab fa-github -lg" style="margin-top: 15px;"></i>
-                <input type="link" name="github"
-                class="input" value="" required>
-                <p></p>
-                <i class="fab fa-linkedin -lg" style="margin-top: 5px;"></i>
-                <input type="link" name="linkedin"
-                class="input" value="" required>
-                <h2>Portfolic Web</h2>
-                <input type="link" name="pweb" value="">
-                <h2>Skills</h2>
-                <input type="text" name="skills"
-                class="input" value="" required>
-                <h2>Achivements</h2>
-                <input type="text" name="achievements"
-                class="input" value="" required>
-                <h2>Extra Achivements</h2>
-                <input type="text" name="extraachievements"
-                class="input" value="" required>
+                <div class="info-list">
+                    <div class="info-row"><span class="info-label">Full Name</span><span class="info-val">{{
+                            data['Fullname'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Date of Birth</span><span class="info-val">{{
+                            data['DOB'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Gender</span><span class="info-val">{{ data['gender']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">Email</span><span class="info-val">{{ data['email']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">Contact No.</span><span class="info-val">{{
+                            data['phno'] }}</span></div>
+                </div>
             </div>
-            <div class="box">
-                <h1>Marksheets(cgpa)</h1>
-                <hr>
-                <h2>First Year</h2>
-                <input type="file" name="fe"
-                class="input" value="" required>
-                <h2>Second Year</h2>
-                <input type="file" name="se"
-                class="input" value="" required>
-                <h2>Third Year</h2>
-                <input type="file" name="te"
-                class="input" value="" required>
-                <h2>Fourth Year</h2>
-                <input type="file" name="be"
-                class="input" value="" required>
+
+            <div class="info-card">
+                <div class="card-header-row">
+                    <div class="card-icon card-icon-purple"><i class="fas fa-file-alt"></i></div>
+                    <h3>Documents</h3>
+                </div>
+                <div class="info-list">
+                    <div class="info-row"><span class="info-label">10th Marksheet</span><span class="info-val">{{
+                            data['10ms'] }}</span></div>
+                    <div class="info-row"><span class="info-label">12th Marksheet</span><span class="info-val">{{
+                            data['12ms'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Aadhar No.</span><span class="info-val">{{
+                            data['aadhar'] }}</span></div>
+                </div>
             </div>
-            <div class="box">
-                <h1>Other</h1>
-                <hr>
-                <h2>PRN</h2>
-                <input type="text" name="prn"
-                class="input" value="" required>
-                <h2>ERP</h2>
-                <input type="text" name="erp"
-                class="input" value="" required>
-                <h2>ABCid</h2>
-                <input type="text" name="abc"
-                class="input" value="" required>
-                <h2>When can you join?</h2>
-                <input type="text" name="join"
-                class="input" value="" required>
+
+            <div class="info-card">
+                <div class="card-header-row">
+                    <div class="card-icon card-icon-cyan"><i class="fas fa-address-card"></i></div>
+                    <h3>About You</h3>
+                </div>
+                <div class="info-list">
+                    <div class="info-row">
+                        <span class="info-label"><i class="fab fa-github"></i> GitHub</span>
+                        <a href="{{ data['github'] }}" class="info-link" target="_blank">{{ data['github'] }}</a>
+                    </div>
+                    <div class="info-row">
+                        <span class="info-label"><i class="fab fa-linkedin"></i> LinkedIn</span>
+                        <a href="{{ data['linkedin'] }}" class="info-link" target="_blank">{{ data['linkedin'] }}</a>
+                    </div>
+                    <div class="info-row"><span class="info-label">Portfolio</span><span class="info-val">{{
+                            data['pweb'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Skills</span><span class="info-val">{{ data['skills']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">Achievements</span><span class="info-val">{{
+                            data['achievements'] }}</span></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-header-row">
+                    <div class="card-icon card-icon-green"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Marksheets (CGPA)</h3>
+                </div>
+                <div class="info-list">
+                    <div class="info-row"><span class="info-label">First Year</span><span class="info-val cgpa">{{
+                            data['fe'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Second Year</span><span class="info-val cgpa">{{
+                            data['se'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Third Year</span><span class="info-val cgpa">{{
+                            data['te'] }}</span></div>
+                    <div class="info-row"><span class="info-label">Fourth Year</span><span class="info-val cgpa">{{
+                            data['be'] }}</span></div>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <div class="card-header-row">
+                    <div class="card-icon card-icon-orange"><i class="fas fa-id-card"></i></div>
+                    <h3>Other Details</h3>
+                </div>
+                <div class="info-list">
+                    <div class="info-row"><span class="info-label">PRN</span><span class="info-val">{{ data['prn']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">ERP</span><span class="info-val">{{ data['erp']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">ABCid</span><span class="info-val">{{ data['abc']
+                            }}</span></div>
+                    <div class="info-row"><span class="info-label">Available From</span><span class="info-val">{{
+                            data['join'] }}</span></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ── Profile FORM (data doesn't exist) ── -->
+        {% else %}
+        <div class="welcome-banner">
+            <div class="welcome-text">
+                <h2>📝 Complete Your Profile</h2>
+                <p>Fill in your details so recruiters can find you. All fields are required.</p>
             </div>
         </div>
-        <div class="container">
-            <button type="submit" class="bottom-center">Save</button>
-          </div>
+
+        <form method="post" action="/profile" enctype="multipart/form-data" class="profile-form-wrapper">
+            <div class="profile-grid">
+
+                <div class="info-card form-card">
+                    <div class="card-header-row">
+                        <div class="card-icon card-icon-blue"><i class="fas fa-user"></i></div>
+                        <h3>Personal Info</h3>
+                    </div>
+                    <div class="form-fields">
+                        <div class="field-group"><label>Full Name</label><input type="text" name="Fullname"
+                                placeholder="Your full name" required></div>
+                        <div class="field-group"><label>Date of Birth</label><input type="text" name="DOB"
+                                placeholder="DD/MM/YYYY" required></div>
+                        <div class="field-group">
+                            <label>Gender</label>
+                            <div class="radio-group">
+                                <label class="radio-label"><input type="radio" name="gender" value="Male" required>
+                                    Male</label>
+                                <label class="radio-label"><input type="radio" name="gender" value="Female">
+                                    Female</label>
+                            </div>
+                        </div>
+                        <div class="field-group"><label>Email</label><input type="email" name="email"
+                                placeholder="you@college.edu" required></div>
+                        <div class="field-group"><label>Contact No.</label><input type="text" name="phno"
+                                pattern="\d{10}" placeholder="10-digit mobile number" required></div>
+                    </div>
+                </div>
+
+                <div class="info-card form-card">
+                    <div class="card-header-row">
+                        <div class="card-icon card-icon-purple"><i class="fas fa-file-alt"></i></div>
+                        <h3>Documents</h3>
+                    </div>
+                    <div class="form-fields">
+                        <div class="field-group"><label>10th Marksheet</label><input type="file" name="10ms" required>
+                        </div>
+                        <div class="field-group"><label>12th Marksheet</label><input type="file" name="12ms" required>
+                        </div>
+                        <div class="field-group"><label>Aadhar No. (12 digits)</label><input type="number" name="aadhar"
+                                placeholder="123456789012" required></div>
+                    </div>
+                </div>
+
+                <div class="info-card form-card">
+                    <div class="card-header-row">
+                        <div class="card-icon card-icon-cyan"><i class="fas fa-address-card"></i></div>
+                        <h3>About You</h3>
+                    </div>
+                    <div class="form-fields">
+                        <div class="field-group"><label><i class="fab fa-github"></i> GitHub URL</label><input
+                                type="url" name="github" placeholder="https://github.com/username" required></div>
+                        <div class="field-group"><label><i class="fab fa-linkedin"></i> LinkedIn URL</label><input
+                                type="url" name="linkedin" placeholder="https://linkedin.com/in/username" required>
+                        </div>
+                        <div class="field-group"><label>Portfolio Website</label><input type="url" name="pweb"
+                                placeholder="https://yourportfolio.com"></div>
+                        <div class="field-group"><label>Skills</label><input type="text" name="skills"
+                                placeholder="Python, JavaScript, React..." required></div>
+                        <div class="field-group"><label>Achievements</label><input type="text" name="achievements"
+                                placeholder="Hackathon winner, etc." required></div>
+                        <div class="field-group"><label>Extra Achievements</label><input type="text"
+                                name="extraachievements" placeholder="Sports, volunteering..." required></div>
+                    </div>
+                </div>
+
+                <div class="info-card form-card">
+                    <div class="card-header-row">
+                        <div class="card-icon card-icon-green"><i class="fas fa-graduation-cap"></i></div>
+                        <h3>Marksheets (CGPA)</h3>
+                    </div>
+                    <div class="form-fields">
+                        <div class="field-group"><label>First Year</label><input type="file" name="fe" required></div>
+                        <div class="field-group"><label>Second Year</label><input type="file" name="se" required></div>
+                        <div class="field-group"><label>Third Year</label><input type="file" name="te" required></div>
+                        <div class="field-group"><label>Fourth Year</label><input type="file" name="be" required></div>
+                    </div>
+                </div>
+
+                <div class="info-card form-card">
+                    <div class="card-header-row">
+                        <div class="card-icon card-icon-orange"><i class="fas fa-id-card"></i></div>
+                        <h3>Other Details</h3>
+                    </div>
+                    <div class="form-fields">
+                        <div class="field-group"><label>PRN</label><input type="text" name="prn"
+                                placeholder="Permanent Registration Number" required></div>
+                        <div class="field-group"><label>ERP</label><input type="text" name="erp" placeholder="ERP ID"
+                                required></div>
+                        <div class="field-group"><label>ABCid</label><input type="text" name="abc"
+                                placeholder="Academic Bank of Credits ID" required></div>
+                        <div class="field-group"><label>When Can You Join?</label><input type="text" name="join"
+                                placeholder="e.g. Immediately, June 2025" required></div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="form-submit-bar">
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-save"></i> Save Profile
+                </button>
+            </div>
         </form>
-    </section>
-{% endif %}
+        {% endif %}
 
+    </div><!-- /main-area -->
 
+    <script>
+        document.getElementById('hamburgerBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+        const toast = document.getElementById('profileToast');
+        if (toast) setTimeout(() => toast.style.opacity = '0', 4000);
+    </script>
 </body>
+
 </html>

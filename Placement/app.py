@@ -96,11 +96,13 @@ def coordinator():
         try:
             db.checck_user_password_coordinator(request.form['email'], request.form['password'])
         except DBException.UserDoesNotExists:
-            return render_template('coordinator.html')
+            return render_template('coordinator.html', login_error="Invalid email or password")
+        except Exception as e:
+            print(f"[Coordinator login error] {e}")
+            return render_template('coordinator.html', login_error=f"Server error: {e}")
 
         resp = make_response(redirect(url_for('coordinatordash')))
         resp.set_cookie('coordinatoremail', request.form['email'])
-
         return resp
 
     return render_template('coordinator.html')

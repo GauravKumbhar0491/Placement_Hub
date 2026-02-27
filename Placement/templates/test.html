@@ -1,80 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ</title>
+    <title>Testimonials — Placement Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link rel="stylesheet" href="/static/test.css" />
-   
-  <!-- Font Awesome Cdn Link -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>
-  
 </head>
+
 <body>
-    <div class="sidebar">
-        <div class="logo"></div>
-        <ul class="main">
-            <li class="active">
-                <a href="/dashboard">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <span>Dashboard</span>
-                </a>
-            </li>
-            <li>
-                <a href="/profile">
-                    <i class="fas fa-user"></i>
-                    <span>Profile</span>
-                </a>
-            </li>
-            <li>
-                <a href="/static">
-                    <i class="fas fa-chart-bar"></i>
-                    <span>Statistics</span>
-                </a>
-            </li>
-           
-            <li>
-                <a href="/faq">
-                    <i class="fas fa-question-circle"></i>
-                    <span>FAQ</span>
-                </a>
-            </li>
-            <li>
-                <a href="/testimonials">
-                    <i class="fas fa-star"></i>
-                    <span>Testimonials</span>
-                </a>
-            </li>
-            <li>
-                <a href="/">
-                    <i class="fas fa-sign-out-alt"></i>
-                    <span>Log out</span>
-                </a>
-            </li>
-        </ul>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+            <div class="sidebar-icon-wrap"><i class="fas fa-briefcase"></i></div>
+            <span class="sidebar-title">Placement Hub</span>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="/dashboard" class="nav-item"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a>
+            <a href="/profile" class="nav-item"><i class="fas fa-user"></i><span>Profile</span></a>
+            <a href="/stat" class="nav-item"><i class="fas fa-chart-bar"></i><span>Statistics</span></a>
+            <a href="/faq" class="nav-item"><i class="fas fa-question-circle"></i><span>FAQ</span></a>
+            <a href="/testimonials" class="nav-item active"><i class="fas fa-star"></i><span>Testimonials</span></a>
+        </nav>
+        <div class="sidebar-footer">
+            <a href="/api/logout" class="nav-item nav-item-danger"><i class="fas fa-sign-out-alt"></i><span>Log
+                    Out</span></a>
+        </div>
+    </aside>
+
+    <div class="main-area">
+        <header class="top-bar">
+            <button class="hamburger-btn" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+            <div class="top-bar-info">
+                <h1>Testimonials</h1>
+                <p>Success stories from our placed students and alumni</p>
+            </div>
+            <div class="avatar-chip">
+                <div class="avatar-icon"><i class="fas fa-user-graduate"></i></div>
+                <span class="avatar-label">Student</span>
+            </div>
+        </header>
+
+        <!-- Intro banner -->
+        <div class="welcome-banner">
+            <div class="welcome-text">
+                <h2><i class="fas fa-star" style="color:#f59e0b;margin-right:8px;"></i>Real Stories, Real Success</h2>
+                <p>Hear from students who launched their careers through our College Placement Hub.</p>
+            </div>
+            <div class="welcome-art"><i class="fas fa-trophy"></i></div>
+        </div>
+
+        <!-- Testimonial cards -->
+        <div class="testimonials-grid">
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    I am grateful for the guidance and support I received from the placement hub team. They helped me
+                    polish my resume, prepare for interviews, and connect with potential employers. Thanks to their
+                    assistance, I landed an internship at a leading tech company, which eventually led to a full-time
+                    job offer.
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #3b82f6, #7c3aed);">A
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Akash Sharma</span>
+                        <span class="testimonial-role">Software Engineer — TCS</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    The networking opportunities provided by the placement hub were invaluable. I attended several
+                    workshops and events where I had the chance to interact with industry professionals and recruiters.
+                    These connections played a significant role in securing multiple job offers.
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #7c3aed, #06b6d4);">P
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Priya Patil</span>
+                        <span class="testimonial-role">Data Analyst — Infosys</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    The resources offered by the placement hub, such as online assessments and career workshops, helped
+                    me gain insights into various industries and develop essential skills. I felt well-prepared and
+                    confident during my job search, thanks to the support I received.
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #06b6d4, #10b981);">R
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Rahul Deshmukh</span>
+                        <span class="testimonial-role">Full Stack Developer — Wipro</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    Getting placed was a dream I thought was far away. The placement coordinator at Placement Hub helped
+                    me craft a standout profile and guided me through every step of the selection process. I now work at
+                    Accenture and couldn't be happier!
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #10b981, #f59e0b);">S
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Sneha Joshi</span>
+                        <span class="testimonial-role">Business Analyst — Accenture</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    The mock interview sessions were a game-changer. I went from being extremely nervous to confidently
+                    answering HR and technical rounds. The team's feedback was constructive and actionable. Highly
+                    recommend using all the features Placement Hub offers.
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #f59e0b, #ef4444);">V
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Vivek Kulkarni</span>
+                        <span class="testimonial-role">DevOps Engineer — Cognizant</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card">
+                <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                <p class="testimonial-text">
+                    I was skeptical at first, but the placement hub exceeded all expectations. From resume building to
+                    post-offer negotiation tips, the support was comprehensive. I secured a package of 12 LPA, which I
+                    could have never imagined without this platform's help.
+                </p>
+                <div class="testimonial-footer">
+                    <div class="testimonial-avatar" style="background: linear-gradient(135deg, #ef4444, #7c3aed);">N
+                    </div>
+                    <div>
+                        <span class="testimonial-name">Neha Wagh</span>
+                        <span class="testimonial-role">Cloud Engineer — IBM</span>
+                    </div>
+                    <div class="testimonial-stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
-    <div class="main-content">
-        <div class="container">
-            
-        </div>
-        <div class="info">
-            <h2 style="text-align: center;">Welcome to the Testimonials Page!</h2>
-            <p>
-                Welcome to the Testimonials page of Progressive Education Society's Modern College of Engineering's Student Placement Hub. Here, we showcase the experiences and success stories of our students and alumni who have benefitted from our placement services. Their testimonials highlight the impact of our dedicated efforts in guiding and supporting individuals on their career journeys. From securing internships at renowned companies to landing coveted full-time positions, our community members have achieved remarkable milestones with the assistance of our placement hub. We invite you to read through their stories and discover how Progressive Education Society's Modern College of Engineering has helped shape their professional lives.
-            </p>
-            <p>
-                "I am grateful for the guidance and support I received from the placement hub team. They helped me polish my resume, prepare for interviews, and connect with potential employers. Thanks to their assistance, I landed an internship at a leading tech company, which eventually led to a full-time job offer."
-            </p>
-            <p>
-                "The networking opportunities provided by the placement hub were invaluable. I attended several workshops and events where I had the chance to interact with industry professionals and recruiters. These connections played a significant role in securing multiple job offers."
-            </p>
-            <p>
-                "The resources offered by the placement hub, such as online assessments and career workshops, helped me gain insights into various industries and develop essential skills. I felt well-prepared and confident during my job search, thanks to the support I received."
-            </p>
-        
-           
-        
+    <script>
+        document.getElementById('hamburgerBtn').addEventListener('click', () => {
+            document.getElementById('sidebar').classList.toggle('open');
+        });
+    </script>
 </body>
+
 </html>
