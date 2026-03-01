@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response
+from flask import Flask, render_template, request, redirect, url_for, jsonify, make_response, send_from_directory
 from db import DB, DBException
 from flask_cors import cross_origin
 
@@ -14,6 +14,10 @@ db = DB()
 @app.route('/')
 def main_page():
     return render_template('index.html')
+
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory('templates', 'sitemap.xml')
 
 
 @app.route('/stud_login', methods=['GET', 'POST'])
